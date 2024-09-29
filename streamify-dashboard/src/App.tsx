@@ -1,13 +1,16 @@
 import { ThemeProvider } from "@/components/theme-provider";
-import { ModeToggle } from "./components/mode-toggle";
-
+import { Appbar } from "./components/Modules/Appbar";
+import { RecoilRoot } from "recoil";
 function App() {
   return (
-    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <div>
-        <ModeToggle />
-      </div>
-    </ThemeProvider>
+    <RecoilRoot>
+      <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+        <div>
+          {/* <ModeToggle /> */}
+          <Appbar />
+        </div>
+      </ThemeProvider>
+    </RecoilRoot>
   );
 }
 
