@@ -1,14 +1,14 @@
+import TopMusicChart from "./TopMusicChart";
+
 export function Hero() {
   return (
-    <div className="flex flex-row px-6">
-      <div className="w-3/4 ">
-        <img
-          src="./Screenshot.png"
-          alt=""
-          className="rounded-3xl w-[80%] h-[50vh] "
-        />
+    <div className="flex flex-col md:flex-row px-6 gap-4">
+      <div className="w-auto ">
+        <img src="./Screenshot.png" alt="" className="rounded-3xl  h-[50vh] " />
       </div>
-      <div className="w-1/4"></div>
+      <div className="w-full md:w-[40%]">
+        <TopMusicChart />
+      </div>
 
       {/* <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl lg:text-center">
