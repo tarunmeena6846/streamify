@@ -4,8 +4,8 @@ const topSongs = [
   { title: "Blinding Lights", artist: "The Weeknd", time: "03:37" },
   { title: "Levitating", artist: "Dua Lipa", time: "02:40" },
   { title: "Save Your Tears", artist: "The Weeknd", time: "03:10" },
-  //   { title: "Peaches", artist: "Justin Bieber", time: "03:50" },
-  //   { title: "Good 4 U", artist: "Olivia Rodrigo", time: "02:37" },
+    { title: "Peaches", artist: "Justin Bieber", time: "03:50" },
+    { title: "Good 4 U", artist: "Olivia Rodrigo", time: "02:37" },
 ];
 const TopMusicChart = () => {
   return (

@@ -11,7 +11,7 @@ import {
 
 const Sidebar = () => {
   return (
-    <div className="h-screen bg-transparent text-white hidden lg:block w-64 flex flex-col p-4">
+    <div className="h-screen bg-transparent text-white hidden xl:block w-64 flex flex-col p-4">
       {/* Navigation Links */}
       <nav className="flex flex-col gap-4">
         <a

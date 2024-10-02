@@ -1,3 +1,4 @@
+import SongThumbnailGrid from "./SongsThumbnailCard";
 import TopMusicChart from "./TopMusicChart";
 
 export function Hero() {
@@ -5,6 +6,7 @@ export function Hero() {
     <div className="flex flex-col md:flex-row px-6 gap-4">
       <div className="w-auto ">
         <img src="./Screenshot.png" alt="" className="rounded-3xl  h-[50vh] " />
+        <SongThumbnailGrid />
       </div>
       <div className="w-full md:w-[40%]">
         <TopMusicChart />
