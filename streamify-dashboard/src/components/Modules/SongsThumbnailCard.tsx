@@ -1,4 +1,5 @@
 import React from "react";
+import { MusicPlayerBar } from "./MusicPlayer";
 
 const SongThumbnailCard = ({ song }) => {
   return (
@@ -82,6 +83,7 @@ const SongThumbnailGrid = () => {
           <SongThumbnailCard key={index} song={song} />
         ))}
       </div>
+      <MusicPlayerBar currentSong={songs[0]} />
     </div>
   );
 };
