@@ -3,14 +3,24 @@ import { Appbar } from "./components/Modules/Appbar";
 import { RecoilRoot } from "recoil";
 import { Hero } from "./components/Modules/Hero";
 import Home from "./components/Modules/Home";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { Dashboard } from "./components/Modules/Dashboard";
+import { StreamAnalytics } from "./components/Modules/StreamAnalytics";
 function App() {
   return (
     <RecoilRoot>
       <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-        {/* <ModeToggle /> */}
         <Appbar />
-        {/* <Hero /> */}
-        <Home />
+        <Router>
+          {/* <ModeToggle /> */}
+          <Routes>
+            {/* <Hero /> */}
+
+            <Route path="/" element={<Home />} />
+            <Route path="/user-analytics" element={<Dashboard />} />
+            <Route path="/stream-analytics" element={<StreamAnalytics />} />
+          </Routes>
+        </Router>
       </ThemeProvider>
     </RecoilRoot>
   );

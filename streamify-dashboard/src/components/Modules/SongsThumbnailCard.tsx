@@ -11,7 +11,7 @@ const SongThumbnailCard = ({ song }) => {
 
       {/* Song Info */}
       <div className="mt-2 text-center">
-        <p className="text-white text-sm font-semibold truncate w-full">
+        <p className="text-black dark:text-white text-sm font-semibold truncate w-full">
           {song.title.length > 20
             ? `${song.title.slice(0, 20)}...`
             : song.title}
@@ -80,10 +80,12 @@ const SongThumbnailGrid = () => {
       <h2 className="text-white text-xl mb-4">Top Albums</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
         {songs.map((song, index) => (
-          <SongThumbnailCard key={index} song={song} />
+          <>
+            <SongThumbnailCard key={index} song={song} />
+            <MusicPlayerBar key={index} currentSong={song} />
+          </>
         ))}
       </div>
-      <MusicPlayerBar currentSong={songs[0]} />
     </div>
   );
 };
