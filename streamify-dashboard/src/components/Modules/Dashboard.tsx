@@ -2,10 +2,28 @@ import { User } from "lucide-react";
 import { Card, CardContent, CardHeader } from "../ui/card";
 import DashboardLayout from "./DashboardLayout";
 import UserGrowth from "../Charts/UserGrowth";
+import { Separator } from "../ui/separator";
 export const keyMetrics = {
   totalUsers: 1350000,
   activeUsers: 950000,
   newUsers: 50000,
+  totalStreams: 1250000,
+  revenue: {
+    total: 850000,
+    breakdown: {
+      subscriptions: 600000,
+      advertisements: 250000,
+    },
+  },
+  topArtist: {
+    name: "Taylor Swift",
+    streams: 150000,
+  },
+  mostSearchedSong: {
+    title: "As It Was",
+    artist: "Harry Styles",
+    streams: 100000,
+  },
 };
 export const userGrowthData = [
   { month: "Jan", totalUsers: 800000, activeUsers: 600000 },
@@ -20,6 +38,14 @@ export const userGrowthData = [
   { month: "Oct", totalUsers: 1250000, activeUsers: 880000 },
   { month: "Nov", totalUsers: 1300000, activeUsers: 900000 },
   { month: "Dec", totalUsers: 1350000, activeUsers: 950000 },
+];
+
+export const topStreamedSongs = [
+  { title: "Anti-Hero", artist: "Taylor Swift", streams: 50000 },
+  { title: "As It Was", artist: "Harry Styles", streams: 45000 },
+  { title: "Blinding Lights", artist: "The Weeknd", streams: 40000 },
+  { title: "Levitating", artist: "Dua Lipa", streams: 38000 },
+  { title: "Good 4 U", artist: "Olivia Rodrigo", streams: 35000 },
 ];
 
 export function Dashboard() {
@@ -38,6 +64,7 @@ export function Dashboard() {
           <CardHeader>New Users</CardHeader>
           <CardContent>{keyMetrics.newUsers}</CardContent>
         </Card>
+        {/* <Separator className="col-span-6" /> */}
         <Card className="col-span-6 ">
           <UserGrowth userGrowthData={userGrowthData} />
         </Card>
