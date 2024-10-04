@@ -15,15 +15,42 @@ export const keyMetrics = {
       advertisements: 250000,
     },
   },
-  topArtist: {
-    name: "Taylor Swift",
-    streams: 150000,
-  },
-  mostSearchedSong: {
-    title: "As It Was",
-    artist: "Harry Styles",
-    streams: 100000,
-  },
+  topArtist: [
+    {
+      name: "Taylor Swift",
+      image: "./taylor.png",
+      streams: 150000,
+    },
+    {
+      name: "Harry Styles",
+      image: "./harry.jpeg",
+      streams: 120000,
+    },
+    {
+      name: "Ed Sheeran",
+      image: "./ed.jpeg",
+      streams: 100000,
+    },
+    {
+      name: "The Weeknd",
+      image: "./the_weeknd.jpg",
+      streams: 90000,
+    },
+  ],
+  mostSearchedSongs: [
+    {
+      title: "Anti-Hero",
+      artist: "Taylor Swift",
+      streams: 150000,
+      image: "./taylor.png",
+    },
+    {
+      title: "As It was",
+      artist: "Harry Styles",
+      streams: 100000,
+      image: "./harry.jpeg",
+    },
+  ],
 };
 export const userGrowthData = [
   { month: "Jan", totalUsers: 800000, activeUsers: 600000 },
@@ -41,11 +68,36 @@ export const userGrowthData = [
 ];
 
 export const topStreamedSongs = [
-  { title: "Anti-Hero", artist: "Taylor Swift", streams: 50000 },
-  { title: "As It Was", artist: "Harry Styles", streams: 45000 },
-  { title: "Blinding Lights", artist: "The Weeknd", streams: 40000 },
-  { title: "Levitating", artist: "Dua Lipa", streams: 38000 },
-  { title: "Good 4 U", artist: "Olivia Rodrigo", streams: 35000 },
+  {
+    title: "Anti-Hero",
+    artist: "Taylor Swift",
+    streams: 50000,
+    image: "./taylor.png",
+  },
+  {
+    title: "As It Was",
+    artist: "Harry Styles",
+    streams: 45000,
+    image: "./harry.jpeg",
+  },
+  {
+    title: "Blinding Lights",
+    artist: "The Weeknd",
+    streams: 40000,
+    image: "./the_weeknd.jpg",
+  },
+  {
+    title: "Levitating",
+    artist: "Dua Lipa",
+    streams: 38000,
+    image: "./dua.jpg",
+  },
+  {
+    title: "Good 4 U",
+    artist: "Olivia Rodrigo",
+    streams: 35000,
+    image: "./olivia.jpeg",
+  },
 ];
 
 export function Dashboard() {
