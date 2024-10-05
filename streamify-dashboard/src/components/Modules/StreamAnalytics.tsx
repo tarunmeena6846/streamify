@@ -6,7 +6,7 @@ import { Button } from "../ui/button";
 import { RecentStreamsTable } from "./RecentStreamTable";
 import { Separator } from "../ui/separator";
 
-const ArtistCard = ({ artist }) => {
+export const ArtistCard = ({ artist }) => {
   return (
     <div className="flex flex-col items-center">
       <img

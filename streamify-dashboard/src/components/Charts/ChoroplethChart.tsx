@@ -16,60 +16,62 @@ const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
 
 // Data for all states (unemployment rates as of September 2023)
 const data = [
-  { id: "01", state: "Alabama", value: 2.1 },
-  { id: "02", state: "Alaska", value: 4.1 },
-  { id: "04", state: "Arizona", value: 4.0 },
-  { id: "05", state: "Arkansas", value: 3.1 },
-  { id: "06", state: "California", value: 4.7 },
-  { id: "08", state: "Colorado", value: 3.1 },
-  { id: "09", state: "Connecticut", value: 3.5 },
-  { id: "10", state: "Delaware", value: 4.1 },
-  { id: "12", state: "Florida", value: 2.8 },
-  { id: "13", state: "Georgia", value: 3.2 }, // FIPS 13 for Georgia
-  { id: "15", state: "Hawaii", value: 3.0 }, // FIPS 15 for Hawaii
-  { id: "16", state: "Idaho", value: 3.2 }, // FIPS 16 for Idaho
-  { id: "17", state: "Illinois", value: 4.1 }, // FIPS 17 for Illinois
-  { id: "18", state: "Indiana", value: 3.3 }, // FIPS 18 for Indiana
-  { id: "19", state: "Iowa", value: 2.6 }, // FIPS 19 for Iowa
-  { id: "20", state: "Kansas", value: 2.7 }, // FIPS 20 for Kansas
-  { id: "21", state: "Kentucky", value: 4.0 }, // FIPS 21 for Kentucky
-  { id: "22", state: "Louisiana", value: 3.5 }, // FIPS 22 for Louisiana
-  { id: "23", state: "Maine", value: 2.7 }, // FIPS 23 for Maine
-  { id: "24", state: "Maryland", value: 1.9 }, // FIPS 24 for Maryland
-  { id: "25", state: "Massachusetts", value: 2.8 }, // FIPS 25 for Massachusetts
-  { id: "26", state: "Michigan", value: 3.7 }, // FIPS 26 for Michigan
-  { id: "27", state: "Minnesota", value: 2.9 }, // FIPS 27 for Minnesota
-  { id: "28", state: "Mississippi", value: 3.2 }, // FIPS 28 for Mississippi
-  { id: "29", state: "Missouri", value: 2.5 }, // FIPS 29 for Missouri
-  { id: "30", state: "Montana", value: 2.8 }, // FIPS 30 for Montana
-  { id: "31", state: "Nebraska", value: 2.1 }, // FIPS 31 for Nebraska
-  { id: "32", state: "Nevada", value: 5.4 }, // FIPS 32 for Nevada
-  { id: "33", state: "New Hampshire", value: 2.1 }, // FIPS 33 for New Hampshire
-  { id: "34", state: "New Jersey", value: 4.4 }, // FIPS 34 for New Jersey
-  { id: "35", state: "New Mexico", value: 3.8 }, // FIPS 35 for New Mexico
-  { id: "36", state: "New York", value: 3.8 }, // FIPS 36 for New York
-  { id: "37", state: "North Carolina", value: 3.5 }, // FIPS 37 for North Carolina
-  { id: "38", state: "North Dakota", value: 1.9 }, // FIPS 38 for North Dakota
-  { id: "39", state: "Ohio", value: 3.4 }, // FIPS 39 for Ohio
-  { id: "40", state: "Oklahoma", value: 3.2 }, // FIPS 40 for Oklahoma
-  { id: "41", state: "Oregon", value: 3.6 }, // FIPS 41 for Oregon
-  { id: "42", state: "Pennsylvania", value: 3.4 }, // FIPS 42 for Pennsylvania
-  { id: "44", state: "Rhode Island", value: 2.7 }, // FIPS 44 for Rhode Island
-  { id: "45", state: "South Carolina", value: 3.1 }, // FIPS 45 for South Carolina
-  { id: "46", state: "South Dakota", value: 2.0 }, // FIPS 46 for South Dakota
-  { id: "47", state: "Tennessee", value: 3.2 }, // FIPS 47 for Tennessee
-  { id: "48", state: "Texas", value: 4.1 }, // FIPS 48 for Texas
-  { id: "49", state: "Utah", value: 2.3 }, // FIPS 49 for Utah
-  { id: "50", state: "Vermont", value: 2.0 }, // FIPS 50 for Vermont
-  { id: "51", state: "Virginia", value: 2.7 }, // FIPS 51 for Virginia
-  { id: "53", state: "Washington", value: 3.7 }, // FIPS 53 for Washington
-  { id: "54", state: "West Virginia", value: 4.0 }, // FIPS 54 for West Virginia
-  { id: "55", state: "Wisconsin", value: 3.2 }, // FIPS 55 for Wisconsin
-  { id: "56", state: "Wyoming", value: 3.3 }, // FIPS 56 for Wyoming
+  { id: "01", state: "Alabama", revenue: 34399 },
+  { id: "02", state: "Alaska", revenue: 67122 },
+  { id: "04", state: "Arizona", revenue: 65444 },
+  { id: "05", state: "Arkansas", revenue: 50719 },
+  { id: "06", state: "California", revenue: 76945 },
+  { id: "08", state: "Colorado", revenue: 50719 },
+  { id: "09", state: "Connecticut", revenue: 57268 },
+  { id: "10", state: "Delaware", revenue: 67122 },
+  { id: "12", state: "Florida", revenue: 45894 },
+  { id: "13", state: "Georgia", revenue: 52429 },
+  { id: "15", state: "Hawaii", revenue: 49009 },
+  { id: "16", state: "Idaho", revenue: 52429 },
+  { id: "17", state: "Illinois", revenue: 67122 },
+  { id: "18", state: "Indiana", revenue: 54039 },
+  { id: "19", state: "Iowa", revenue: 42679 },
+  { id: "20", state: "Kansas", revenue: 44389 },
+  { id: "21", state: "Kentucky", revenue: 65444 },
+  { id: "22", state: "Louisiana", revenue: 57268 },
+  { id: "23", state: "Maine", revenue: 44389 },
+  { id: "24", state: "Maryland", revenue: 31269 },
+  { id: "25", state: "Massachusetts", revenue: 45894 },
+  { id: "26", state: "Michigan", revenue: 60688 },
+  { id: "27", state: "Minnesota", revenue: 47604 },
+  { id: "28", state: "Mississippi", revenue: 52429 },
+  { id: "29", state: "Missouri", revenue: 40969 },
+  { id: "30", state: "Montana", revenue: 45894 },
+  { id: "31", state: "Nebraska", revenue: 34399 },
+  { id: "32", state: "Nevada", revenue: 88401 },
+  { id: "33", state: "New Hampshire", revenue: 34399 },
+  { id: "34", state: "New Jersey", revenue: 71970 },
+  { id: "35", state: "New Mexico", revenue: 62128 },
+  { id: "36", state: "New York", revenue: 62128 },
+  { id: "37", state: "North Carolina", revenue: 57268 },
+  { id: "38", state: "North Dakota", revenue: 31269 },
+  { id: "39", state: "Ohio", revenue: 55728 },
+  { id: "40", state: "Oklahoma", revenue: 52429 },
+  { id: "41", state: "Oregon", revenue: 59009 },
+  { id: "42", state: "Pennsylvania", revenue: 55728 },
+  { id: "44", state: "Rhode Island", revenue: 44389 },
+  { id: "45", state: "South Carolina", revenue: 50719 },
+  { id: "46", state: "South Dakota", revenue: 32709 },
+  { id: "47", state: "Tennessee", revenue: 52429 },
+  { id: "48", state: "Texas", revenue: 67122 },
+  { id: "49", state: "Utah", revenue: 37634 },
+  { id: "50", state: "Vermont", revenue: 32709 },
+  { id: "51", state: "Virginia", revenue: 44389 },
+  { id: "53", state: "Washington", revenue: 60688 },
+  { id: "54", state: "West Virginia", revenue: 65444 },
+  { id: "55", state: "Wisconsin", revenue: 52429 },
+  { id: "56", state: "Wyoming", revenue: 54039 },
 ];
 
+// Total revenue sum: 1,731,000
+
 const colorScale = scaleQuantile()
-  .domain(data.map((d) => d.value))
+  .domain(data.map((d) => d.revenue))
   .range([
     "#e3f2fd",
     "#bbdefb",
@@ -112,8 +114,8 @@ export default function USChoroplethMap() {
   return (
     <Card className="w-full mx-auto">
       <CardHeader>
-        <CardTitle>US Unemployment Rate (September 2023)</CardTitle>
-        <CardDescription>Unemployment rate by state</CardDescription>
+        <CardTitle>Aggregate Revenue (2024)</CardTitle>
+        <CardDescription>Total revenue for the year</CardDescription>
       </CardHeader>
       <CardContent>
         <div className="relative" ref={mapRef}>
@@ -132,7 +134,7 @@ export default function USChoroplethMap() {
                     <Geography
                       key={geo.rsmKey}
                       geography={geo}
-                      fill={cur ? colorScale(cur.value) : "#F5F5F5"}
+                      fill={cur ? colorScale(cur.revenue) : "#F5F5F5"}
                       stroke="#FFF"
                       strokeWidth={0.5}
                       style={{
@@ -141,7 +143,7 @@ export default function USChoroplethMap() {
                         pressed: { outline: "none", opacity: 0.8 },
                       }}
                       onMouseEnter={() => {
-                        setTooltipContent(`${cur?.state}: ${cur?.value}%`);
+                        setTooltipContent(`${cur?.state}: $${cur?.revenue}`);
                       }}
                       onMouseLeave={() => {
                         setTooltipContent("");
@@ -165,8 +167,8 @@ export default function USChoroplethMap() {
               {tooltipContent}
             </div>
           )}
-          <div className="absolute bottom-0 left-0 bg-white bg-opacity-80 p-2 rounded-tr-md ">
-            <div className="text-sm font-semibold mb-1">Unemployment Rate</div>
+          <div className="absolute bottom-0 left-0 bg-white bg-opacity-80 p-2 rounded-md ">
+            <div className="text-sm font-semibold mb-1">Revenue</div>
             <div className="flex items-center space-x-1">
               {colorScale.range().map((color, i) => (
                 <div
@@ -177,8 +179,8 @@ export default function USChoroplethMap() {
               ))}
             </div>
             <div className="flex justify-between text-xs mt-1">
-              <span>{Math.min(...data.map((d) => d.value)).toFixed(1)}%</span>
-              <span>{Math.max(...data.map((d) => d.value)).toFixed(1)}%</span>
+              <span>${Math.min(...data.map((d) => d.revenue)).toFixed(1)}</span>
+              <span>${Math.max(...data.map((d) => d.revenue)).toFixed(1)}</span>
             </div>
           </div>
         </div>

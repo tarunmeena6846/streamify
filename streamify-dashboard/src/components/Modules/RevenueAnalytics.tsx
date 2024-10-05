@@ -3,15 +3,26 @@ import ChoroplethMap, { USPageMap } from "../Charts/ChoroplethChart";
 import { RevenueDistributionChart } from "../Charts/RevenueDistributionChart";
 import { Card, CardContent, CardHeader } from "../ui/card";
 import DashboardLayout from "./DashboardLayout";
+import { ArtistCard } from "./StreamAnalytics";
 
 const topRevenueGeneratingSongs = [
-  { song: "Blinding Lights", artist: "The Weeknd", revenue: 50000 },
-  { song: "Levitating", artist: "Dua Lipa", revenue: 45000 },
+  {
+    song: "Blinding Lights",
+    artist: "The Weeknd",
+    revenue: 50000,
+    image: "./the_weeknd.jpg",
+  },
+  {
+    song: "Levitating",
+    artist: "Dua Lipa",
+    revenue: 45000,
+    image: "./dua.jpg",
+  },
 ];
 
 const topRevenueGeneratingArtists = [
-  { artist: "The Weeknd", revenue: 150000 },
-  { artist: "Dua Lipa", revenue: 120000 },
+  { artist: "Ed Sheeran", revenue: 150000, image: "./ed.jpeg" },
+  { artist: "Taylor Swift", revenue: 120000, image: "./taylor.png" },
 ];
 
 const revenueData = {
@@ -167,6 +178,51 @@ export function RevenueAnalytics() {
               Revenue Per User
             </CardHeader>
             <CardContent>{revenueData.revenuePerUser}</CardContent>
+          </Card>
+          <Card className="col-span-3 row-span-1">
+            <CardHeader className="text-xl font-bold">
+              Top revenue generating artists
+            </CardHeader>
+            <div className="flex flex-row justify-between m-3">
+              {topRevenueGeneratingArtists.map((artist, index) => (
+                <div className="flex flex-row items-center gap-3 ml-4 my-2">
+                  <img
+                    src={artist.image}
+                    alt={artist.artist}
+                    className="rounded-full w-20 h-20 object-cover"
+                  />
+                  <div>
+                    <h2 className="text-lg font-semibold mt-2">
+                      {artist.artist}
+                    </h2>
+                    <h2 className="text-sm text-gray-500">{`${artist.revenue}`}</h2>
+                  </div>
+                </div>
+              ))}
+            </div>
+            {/* <CardContent>{revenueData.profitMargin}</CardContent> */}
+            <CardHeader className="text-xl font-bold">
+              Top revenue generating songs
+            </CardHeader>
+            <div className="flex flex-row justify-between m-3">
+              {topRevenueGeneratingSongs.map((artist, index) => (
+                <div className="flex flex-row items-center gap-3 ml-4 my-2">
+                  <img
+                    src={artist.image}
+                    alt={artist.artist}
+                    className="rounded-full w-20 h-20 object-cover"
+                  />
+                  <div className="flex flex-col">
+                    <h2 className="text-lg font-semibold mt-2">
+                      {artist.song}
+                    </h2>
+                    <h2 className="text-sm font-semibold">{artist.artist}</h2>
+                    <h2 className="text-sm text-gray-500">{artist.revenue}</h2>
+                  </div>
+                </div>
+              ))}
+            </div>
+            {/* <CardContent>{revenueData.revenuePerUser}</CardContent> */}
           </Card>
           <div className="col-span-6 row-span-3">
             <ChoroplethMap />
