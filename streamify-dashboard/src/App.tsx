@@ -6,6 +6,7 @@ import Home from "./components/Modules/Home";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import { Dashboard } from "./components/Modules/Dashboard";
 import { StreamAnalytics } from "./components/Modules/StreamAnalytics";
+import { RevenueAnalytics } from "./components/Modules/RevenueAnalytics";
 function App() {
   return (
     <RecoilRoot>
@@ -19,6 +20,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/user-analytics" element={<Dashboard />} />
             <Route path="/stream-analytics" element={<StreamAnalytics />} />
+            <Route path="/revenue-analytics" element={<RevenueAnalytics />} />
           </Routes>
         </Router>
       </ThemeProvider>

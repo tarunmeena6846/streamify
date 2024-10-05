@@ -41,7 +41,7 @@ const Sidebar = () => {
         </button>
 
         <button
-          onClick={() => navigate("/revenue")}
+          onClick={() => navigate("/revenue-analytics")}
           className="flex items-center gap-3 text-black dark:text-gray-300 hover:bg-[#191919] hover:text-white p-2 rounded-lg transition duration-300"
         >
           <DollarSign />

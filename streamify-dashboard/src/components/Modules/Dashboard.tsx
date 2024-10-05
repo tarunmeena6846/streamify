@@ -8,13 +8,6 @@ export const keyMetrics = {
   activeUsers: 950000,
   newUsers: 50000,
   totalStreams: 1250000,
-  revenue: {
-    total: 850000,
-    breakdown: {
-      subscriptions: 600000,
-      advertisements: 250000,
-    },
-  },
   topArtist: [
     {
       name: "Taylor Swift",

@@ -8,13 +8,13 @@ import { Separator } from "../ui/separator";
 
 const ArtistCard = ({ artist }) => {
   return (
-    <div className="flex flex-col items-center space-y-2">
+    <div className="flex flex-col items-center">
       <img
         src={artist.image}
         alt={artist.name}
         className="rounded-full w-20 h-20 object-cover"
       />
-      <h2 className="text-lg font-semibold">{artist.name}</h2>
+      <h2 className="text-lg font-semibold mt-2">{artist.name}</h2>
       <h2 className="text-sm text-gray-500">{`(${artist.streams} streams)`}</h2>
     </div>
   );
@@ -35,13 +35,13 @@ const TopArtists = ({ artists }) => {
 
 const SongCard = ({ title, artist, image, streams }) => {
   return (
-    <div className="flex flex-col items-center space-y-2">
+    <div className="flex flex-col items-center">
       <img
         src={image}
         alt={artist}
         className="rounded-full w-20 h-20 object-cover"
       />
-      <h2 className="text-lg font-semibold">{title}</h2>
+      <h2 className="text-lg font-semibold mt-2">{title}</h2>
       <h2 className="text-sm text-gray-500">{`(${streams} streams)`}</h2>
     </div>
   );
@@ -98,48 +98,9 @@ export function StreamAnalytics() {
           <CardHeader className="text-xl font-bold">Total Streams </CardHeader>
           <CardContent>{keyMetrics.totalStreams}</CardContent>
         </Card>
-        {/* <div className="col-span-2 row-span-1">
-          <h2 className="text-xl mb-4 font-bold">Most Searched Song</h2>
-          <div className="flex flex-row gap-2 pt-2 ">
-            {keyMetrics.mostSearchedSongs.map((song, index) => (
-              <SongCard
-                key={index}
-                title={song.title}
-                artist={song.artist}
-                image={song.image}
-                streams={song.streams}
-              />
-            ))}
-          </div>
-        </div> */}
         <TopArtists artists={keyMetrics.topArtist} />
-        {/* <div className="col-span-4 row-span-1">
-          <CardHeader>Top Streamed Song</CardHeader>
-          <CardContent>
-            {topStreamedSongs.map((s, index) => (
-              <div key={index}>{s.title}</div>
-            ))}
-          </CardContent>
-        </div> */}
         <TopStreamedSongCard topStreamedSongs={topStreamedSongs} />
-        {/* <div className="col-span-2 row-span-1">
-          <h2 className="text-xl mb-4 font-bold">Most Searched Song</h2>
-          <div className="flex flex-row gap-2 pt-2">
-            {keyMetrics.mostSearchedSongs.map((song, index) => (
-              <SongCard
-                key={index}
-                title={song.title}
-                artist={song.artist}
-                image={song.image}
-                streams={song.streams}
-              />
-            ))}
-          </div>
-        </div> */}
-        {/* <Separator className="col-span-6" /> */}
-        {/* <div className=""> */}
         <RecentStreamsTable />
-        {/* </div> */}
       </div>
     </DashboardLayout>
   );
