@@ -11,8 +11,8 @@ function App() {
   return (
     <RecoilRoot>
       <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-        <Appbar />
         <Router>
+          <Appbar />
           {/* <ModeToggle /> */}
           <Routes>
             {/* <Hero /> */}

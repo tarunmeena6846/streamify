@@ -1,18 +1,14 @@
 import React from "react";
-import Sidebar from "./Sidebar"; // Import the sidebar component
+import Sidebar from "./SideBar"; // Import the sidebar component
 
 const DashboardLayout = ({ children }) => {
   return (
     <div className="flex h-screen">
-      {/* Sidebar */}
-      <Sidebar />
-
-      {/* Main Content Area */}
-      <div className="flex-1 bg-transparent p-6 overflow-auto">
-        <div className="max-w-7xl mx-auto">
-          {children}{" "}
-          {/* This will be the content passed from the routes or pages */}
-        </div>
+      <div className="hidden lg:block  xl:w-1/5">
+        <Sidebar />
+      </div>
+      <div className=" bg-transparent p-6 overflow-auto w-full xl:w-4/5">
+        {children}
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 export function Search() {
   return (
-    <div className="flex px-4 py-3 rounded-3xl border-2  overflow-hidden max-w-xl mx-auto ">
+    <div className="flex px-4 py-3 rounded-3xl border-2  overflow-hidden max-w-xl mx-auto hidden md:flex">
       <input
         type="email"
         placeholder="Search Artist or Song..."

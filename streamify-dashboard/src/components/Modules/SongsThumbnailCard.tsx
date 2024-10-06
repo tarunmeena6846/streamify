@@ -78,7 +78,7 @@ const SongThumbnailGrid = () => {
     <div className="container mx-auto py-6">
       {/* Thumbnail Grid */}
       <h2 className="text-white text-xl mb-4">Top Albums</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
+      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
         {songs.map((song, index) => (
           <>
             <SongThumbnailCard key={index} song={song} />

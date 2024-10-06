@@ -11,7 +11,7 @@ export function ModeToggle() {
   };
 
   return (
-    <div className="flex gap-2">
+    <div className="flex gap-2 ">
       <Sun
         className={`h-[1.2rem] w-[1.2rem] ${
           theme === "dark" ? "" : "text-blue-500"

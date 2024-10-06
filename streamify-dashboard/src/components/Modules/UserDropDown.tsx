@@ -9,6 +9,7 @@ import {
 } from "../ui/dropdown-menu";
 import { LogOut, UserRound } from "lucide-react";
 import { useRecoilState } from "recoil";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 
 export function UserDropDown() {
   const [loginClicked, setIsLoginClicked] = useRecoilState(userState);
@@ -21,11 +22,14 @@ export function UserDropDown() {
     },
   ];
   return (
-    <div>
+    <div className="hidden md:block">
       <DropdownMenu>
         <DropdownMenuTrigger className=" flex items-center justify-center">
           <div className="p-1 border-2 rounded-full bg-black text-white dark:bg-white dark:text-black ">
-            <UserRound />
+            <Avatar>
+              <AvatarImage src="https://github.com/shadcn.png" />
+              <AvatarFallback>JD</AvatarFallback>
+            </Avatar>
           </div>
         </DropdownMenuTrigger>
 
@@ -33,7 +37,10 @@ export function UserDropDown() {
           <DropdownMenuLabel className="flex gap-4 items-center">
             <div className="!w-[2rem] flex items-center p-[0.2rem]  justify-center h-8">
               <div className="p-1 border-2 rounded-full border-[#1a1a1a]">
-                <UserRound />
+                <Avatar>
+                  <AvatarImage src="https://github.com/shadcn.png" />
+                  <AvatarFallback>JD</AvatarFallback>
+                </Avatar>
               </div>
             </div>
 

@@ -7,7 +7,20 @@ import { useRecoilState } from "recoil";
 import userState from "@/lib/store/user";
 import NavLink from "./Navlink";
 import { Search } from "../ui/search";
+import { useNavigate } from "react-router-dom";
+import { HamburgerMenuIcon } from "@radix-ui/react-icons";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { MobileMenu } from "./MobileMenu";
+
 export function Appbar() {
+  const navigate = useNavigate();
   const [loginClicked, setIsLoginClicked] = useRecoilState(userState);
   return (
     <nav className="flex items-center gap-2 w-full p-4">
@@ -23,10 +36,10 @@ export function Appbar() {
         className="flex w-full justify-between "
       >
         {/* <div className="flex justify-between justify-center items-center p-4  rounded-lg  w-3/4"> */}
-        <div className="flex items-center">
+        <button className="flex items-center" onClick={() => navigate("/")}>
           <img src="./streamify.svg" alt="logo" className="w-10 h-10 mr-2" />
-          <h1 className="text-2xl font-bold">Streamify</h1>
-        </div>
+          <h1 className="text-2xl font-bold hidden sm:block">Streamify</h1>
+        </button>
         {/* <div className="flex items-center gap-4 rounded-3xl">
           <NavLink href="/dashboard">Home</NavLink>
           <NavLink href="/dashboard">Dashboard</NavLink>
@@ -44,6 +57,7 @@ export function Appbar() {
               onClick={() => {
                 setIsLoginClicked(true);
               }}
+              className="hidden md:block"
             >
               Login
             </Button>
@@ -52,6 +66,7 @@ export function Appbar() {
               <UserDropDown />
             </>
           )}
+          <MobileMenu />
         </div>
         {/* </div> */}
       </motion.div>
