@@ -271,7 +271,7 @@ export function RecentStreamsTable() {
   });
 
   return (
-    <div className="col-span-6">
+    <div className="row-span-2 col-span-1 md:col-span-6">
       <Separator className="my-6"></Separator>
       <h2 className="text-xl font-bold">Recent Streams</h2>
       <div className="flex items-center py-4">
