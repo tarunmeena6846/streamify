@@ -5,8 +5,8 @@ const SongThumbnailCard = ({ song }) => {
   return (
     <div className="flex flex-col items-center w-40 ">
       {/* Album Cover */}
-      <div className="shadow-lg ">
-        <img src={song.image} alt={song.title} className="h-40  rounded-2xl" />
+      <div className="shadow-lg">
+        <img src={song.image} alt={song.title} className="h-40 rounded-2xl" />
       </div>
 
       {/* Song Info */}
@@ -78,7 +78,7 @@ const SongThumbnailGrid = () => {
     <div className="container mx-auto py-6">
       {/* Thumbnail Grid */}
       <h2 className="text-white text-xl mb-4">Top Albums</h2>
-      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-4 mb-8">
         {songs.map((song, index) => (
           <>
             <SongThumbnailCard key={index} song={song} />

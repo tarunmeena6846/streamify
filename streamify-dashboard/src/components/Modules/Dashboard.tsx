@@ -1,8 +1,7 @@
-import { User } from "lucide-react";
 import { Card, CardContent, CardHeader } from "../ui/card";
 import DashboardLayout from "./DashboardLayout";
 import UserGrowth from "../Charts/UserGrowth";
-import { Separator } from "../ui/separator";
+
 export const keyMetrics = {
   totalUsers: 1350000,
   activeUsers: 950000,
