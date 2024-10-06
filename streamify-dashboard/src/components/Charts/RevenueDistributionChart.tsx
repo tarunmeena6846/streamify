@@ -84,7 +84,7 @@ export function RevenueDistributionChart({ revenueData }) {
   };
 
   return (
-    <div className="w-full col-span-3 row-span-2 p-4 border rounded-lg">
+    <div className="w-full h-full col-span-3 row-span-2 p-4 border rounded-lg">
       {/* Fix height here */}
       <div className="mb-4 flex justify-between">
         <div>

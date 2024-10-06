@@ -153,78 +153,95 @@ export function RevenueAnalytics() {
   return (
     <DashboardLayout>
       <div>
-        <div className="grid grid-cols-1 md:grid-cols-6 md:grid-row-6 gap-4">
-          <Card className="col-span-2 row-span-1">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-6 ">
+          {/* Total Revenue */}
+          <Card className="col-span-1 md:col-span-2 md:row-span-1">
             <CardHeader className="text-xl font-bold">Total Revenue</CardHeader>
             <CardContent>{revenueData.totalAggregate}</CardContent>
           </Card>
-          <Card className="col-span-2 row-span-1">
+
+          {/* Projected Revenue */}
+          <Card className="col-span-1 md:col-span-2 md:row-span-1">
             <CardHeader className="text-xl font-bold">
               Projected Revenue
             </CardHeader>
             <CardContent>{revenueData.projectedRevenue}</CardContent>
           </Card>
-          <Card className="col-span-2 row-span-1">
+
+          {/* Total Profit */}
+          <Card className="md:col-span-2 row-span-1">
             <CardHeader className="text-xl font-bold">Total Profit</CardHeader>
             <CardContent>{revenueData.profit}</CardContent>
           </Card>
-          <RevenueDistributionChart
-            revenueData={revenueData.monthlyBreakdown}
-          />
-          <Card className="col-span-3 row-span-1">
+
+          {/* Revenue Distribution Chart */}
+          <div className="col-span-1 row-span-2 md:col-span-4 md:row-span-2">
+            <RevenueDistributionChart
+              revenueData={revenueData.monthlyBreakdown}
+            />
+          </div>
+
+          {/* Profit Margin & Revenue Per User */}
+          <Card className="md:col-span-2 md:row-span-1">
             <CardHeader className="text-xl font-bold">Profit Margin</CardHeader>
             <CardContent>{revenueData.profitMargin}</CardContent>
-            <CardHeader className="text-xl font-bold">
+            <CardHeader className="text-xl font-bold mt-4">
               Revenue Per User
             </CardHeader>
             <CardContent>{revenueData.revenuePerUser}</CardContent>
           </Card>
-          <Card className="col-span-3 row-span-1">
+
+          {/* Top Revenue Generating Artists */}
+          <Card className="md:col-span-2 md:row-span-1">
             <CardHeader className="text-xl font-bold">
-              Top revenue generating artists
+              Top Revenue Generating Artists
             </CardHeader>
-            <div className="flex flex-row justify-between m-3">
+            <div className="flex flex-wrap justify-between m-3">
               {topRevenueGeneratingArtists.map((artist, index) => (
-                <div className="flex flex-row items-center gap-3 ml-4 my-2">
+                <div
+                  key={index}
+                  className="flex flex-col items-center md:flex-row gap-3 ml-4 my-2 w-full md:w-auto"
+                >
                   <img
                     src={artist.image}
                     alt={artist.artist}
-                    className="rounded-full w-20 h-20 object-cover"
+                    className="rounded-full w-16 h-16 object-cover"
                   />
-                  <div>
-                    <h2 className="text-lg font-semibold mt-2">
-                      {artist.artist}
-                    </h2>
-                    <h2 className="text-sm text-gray-500">{`${artist.revenue}`}</h2>
-                  </div>
-                </div>
-              ))}
-            </div>
-            {/* <CardContent>{revenueData.profitMargin}</CardContent> */}
-            <CardHeader className="text-xl font-bold">
-              Top revenue generating songs
-            </CardHeader>
-            <div className="flex flex-row justify-between m-3">
-              {topRevenueGeneratingSongs.map((artist, index) => (
-                <div className="flex flex-row items-center gap-3 ml-4 my-2">
-                  <img
-                    src={artist.image}
-                    alt={artist.artist}
-                    className="rounded-full w-20 h-20 object-cover"
-                  />
-                  <div className="flex flex-col">
-                    <h2 className="text-lg font-semibold mt-2">
-                      {artist.song}
-                    </h2>
-                    <h2 className="text-sm font-semibold">{artist.artist}</h2>
+                  <div className="text-center md:text-left">
+                    <h2 className="text-lg font-semibold">{artist.artist}</h2>
                     <h2 className="text-sm text-gray-500">{artist.revenue}</h2>
                   </div>
                 </div>
               ))}
             </div>
-            {/* <CardContent>{revenueData.revenuePerUser}</CardContent> */}
+
+            {/* Top Revenue Generating Songs */}
+            <CardHeader className="text-xl font-bold">
+              Top Revenue Generating Songs
+            </CardHeader>
+            <div className="flex flex-wrap justify-between m-3">
+              {topRevenueGeneratingSongs.map((song, index) => (
+                <div
+                  key={index}
+                  className="flex flex-col items-center md:flex-row gap-3 ml-4 my-2 w-full md:w-auto"
+                >
+                  <img
+                    src={song.image}
+                    alt={song.artist}
+                    className="rounded-full w-16 h-16 object-cover"
+                  />
+                  <div className="text-center md:text-left">
+                    <h2 className="text-lg font-semibold">{song.song}</h2>
+                    <h2 className="text-sm font-semibold">{song.artist}</h2>
+                    <h2 className="text-sm text-gray-500">{song.revenue}</h2>
+                  </div>
+                </div>
+              ))}
+            </div>
           </Card>
-          <div className="col-span-6 row-span-3">
+
+          {/* Choropleth Map */}
+          <div className="col-span-1 md:col-span-6 md:row-span-2">
             <ChoroplethMap />
           </div>
         </div>

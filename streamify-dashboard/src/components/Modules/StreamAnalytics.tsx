@@ -69,7 +69,7 @@ const TopStreamedSongCard = ({ topStreamedSongs }) => {
 export function StreamAnalytics() {
   return (
     <DashboardLayout>
-      <div className="grid grid-cols-1 grid-rows-5 md:grid-cols-6 md:grid-row-4 gap-4">
+      <div className="grid grid-cols-1 grid-rows-5 md:grid-cols-6  gap-4">
         <div className="col-span-1 row-span-1 md:col-span-4 md:row-span-1 flex justify-between gap-4 bg-[#fbeceb] text-black  rounded-3xl">
           <div className="flex flex-col justify-center mx-6">
             <h2 className="text-sm">Mable</h2>
