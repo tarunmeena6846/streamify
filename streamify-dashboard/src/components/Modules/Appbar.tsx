@@ -26,7 +26,7 @@ export function Appbar() {
       >
         <button className="flex items-center" onClick={() => navigate("/")}>
           <img src="./streamify.svg" alt="logo" className="w-10 h-10 mr-2" />
-          <h1 className="text-2xl font-bold hidden sm:block">Streamify</h1>
+          <h1 className="text-xl sm:text-2xl font-bold  sm:block">Streamify</h1>
         </button>
 
         <div className="flex items-center gap-4">

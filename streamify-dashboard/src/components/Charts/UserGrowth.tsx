@@ -52,7 +52,7 @@ const UserGrowth = ({ userGrowthData }) => {
 
   const options = {
     responsive: true,
-    // maintainAspectRatio: false,
+    maintainAspectRatio: false,
     plugins: {
       title: {
         display: true,

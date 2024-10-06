@@ -3,7 +3,7 @@ import { MusicPlayerBar } from "./MusicPlayer";
 
 const SongThumbnailCard = ({ song }) => {
   return (
-    <div className="flex flex-col items-center w-40 ">
+    <div className="flex flex-col items-center  ">
       {/* Album Cover */}
       <div className="shadow-lg">
         <img src={song.image} alt={song.title} className="h-40 rounded-2xl" />

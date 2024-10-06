@@ -9,7 +9,7 @@ export const MusicPlayerBar = ({ currentSong }) => {
   };
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-gray-900 text-white py-4 px-6 shadow-lg z-50 flex justify-between items-center">
+    <div className="fixed bottom-0 left-0 right-0 bg-gray-900 text-white py-2 px-3 shadow-lg z-50 flex justify-between items-center">
       {/* Song Info */}
       <div className="flex items-center gap-4">
         <div className="w-12 h-12 rounded-lg overflow-hidden">
