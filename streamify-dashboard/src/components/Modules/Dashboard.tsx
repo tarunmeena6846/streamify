@@ -98,15 +98,15 @@ export function Dashboard() {
       <div className="grid grid-cols-1 grid-rows-6 md:grid-rows-5 md:grid-cols-6 gap-4">
         <Card className="md:col-span-2 row-span-1">
           <CardHeader>Total Users</CardHeader>
-          <CardContent>{keyMetrics.totalUsers}</CardContent>
+          <CardContent>{keyMetrics.totalUsers.toLocaleString()}</CardContent>
         </Card>
         <Card className="md:col-span-2 row-span-1">
           <CardHeader>Active Users</CardHeader>
-          <CardContent>{keyMetrics.activeUsers}</CardContent>
+          <CardContent>{keyMetrics.activeUsers.toLocaleString()}</CardContent>
         </Card>
         <Card className="md:col-span-2 md:row-span-1">
           <CardHeader>New Users</CardHeader>
-          <CardContent>{keyMetrics.newUsers}</CardContent>
+          <CardContent>{keyMetrics.newUsers.toLocaleString()}</CardContent>
         </Card>
         {/* <Separator className="col-span-6" /> */}
         <Card className="row-span-3 md:row-span-6 md:col-span-6 ">

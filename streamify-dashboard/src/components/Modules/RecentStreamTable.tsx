@@ -212,8 +212,8 @@ const columns: ColumnDef<StreamData>[] = [
       </Button>
     ),
     cell: ({ row }) => {
-      const streamCount = row.getValue("streamCount");
-      return <div className="text-center">{streamCount as string}</div>;
+      const streamCount: String = row.getValue("streamCount");
+      return <div className="text-center">{streamCount.toLocaleString()}</div>;
     },
     enableSorting: true,
   },
@@ -229,8 +229,8 @@ const columns: ColumnDef<StreamData>[] = [
       </Button>
     ),
     cell: ({ row }) => {
-      const streamCount = row.getValue("userId");
-      return <div className="text-center">{streamCount as string}</div>;
+      const userId = row.getValue("userId");
+      return <div className="text-center">{userId as string}</div>;
     },
     enableSorting: true,
   },

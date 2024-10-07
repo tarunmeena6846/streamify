@@ -1,39 +1,83 @@
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-// import { Label } from "@/components/ui/label";
+import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 import {
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetDescription,
-  SheetFooter,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
-import {
-  BarChart,
+  HomeIcon,
   Users,
   Music,
   DollarSign,
   Settings,
   LogIn,
   LogOut,
-
-  //   User,
 } from "lucide-react";
-import { HamburgerMenuIcon } from "@radix-ui/react-icons";
-import { HomeIcon } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import userState from "@/lib/store/user";
-import { UserDropDown } from "./UserDropDown";
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetHeader,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-import { ModeToggle } from "../mode-toggle";
 
+// Reusable NavItem component
+const NavItem = ({ icon: Icon, label, onClick, disabled = false }) => {
+  return (
+    <SheetClose asChild>
+      <button
+        onClick={onClick}
+        disabled={disabled}
+        className="flex items-center gap-3 text-black dark:text-gray-300 hover:bg-[#191919] hover:text-white p-2 rounded-lg transition duration-300"
+      >
+        <Icon />
+        <span>{label}</span>
+      </button>
+    </SheetClose>
+  );
+};
+
+// Avatar section component
+const AvatarSection = ({ isLoggedIn }) => {
+  return (
+    <SheetHeader className="flex items-center mb-3">
+      {isLoggedIn && (
+        <Avatar>
+          <AvatarImage src="https://github.com/shadcn.png" />
+          <AvatarFallback>JD</AvatarFallback>
+        </Avatar>
+      )}
+    </SheetHeader>
+  );
+};
+
+// Login/Logout button component
+const LoginButton = ({ isLoggedIn, toggleLogin }) => {
+  return (
+    <button
+      onClick={toggleLogin}
+      className="flex items-center gap-3 text-black dark:text-gray-300 hover:bg-[#191919] hover:text-white p-2 rounded-lg transition duration-300"
+    >
+      {isLoggedIn ? (
+        <>
+          <LogOut />
+          <span>Logout</span>
+        </>
+      ) : (
+        <>
+          <LogIn />
+          <span>Login</span>
+        </>
+      )}
+    </button>
+  );
+};
+
+// Main MobileMenu component
 export function MobileMenu() {
   const navigate = useNavigate();
   const [loginClicked, setIsLoginClicked] = useRecoilState(userState);
+
+  const handleLoginClick = () => setIsLoginClicked(!loginClicked);
 
   return (
     <Sheet>
@@ -41,76 +85,35 @@ export function MobileMenu() {
         <HamburgerMenuIcon className="h-6 w-6 md:hidden" />
       </SheetTrigger>
       <SheetContent>
-        <SheetHeader className="flex items-center mb-3">
-          {loginClicked && (
-            <Avatar>
-              <AvatarImage src="https://github.com/shadcn.png" />
-              <AvatarFallback>JD</AvatarFallback>
-            </Avatar>
-          )}
-        </SheetHeader>
+        <AvatarSection isLoggedIn={loginClicked} />
+
         <nav className="flex flex-col gap-4">
-          <button
-            className="flex items-center gap-3 text-black dark:text-gray-300 hover:bg-[#191919] hover:text-white p-2 rounded-lg transition duration-300"
-            onClick={() => navigate("/")}
-          >
-            <HomeIcon />
-            <span className="">Home</span>
-          </button>
-
-          <button
+          <NavItem icon={HomeIcon} label="Home" onClick={() => navigate("/")} />
+          <NavItem
+            icon={Users}
+            label="User Insights"
             onClick={() => navigate("/user-analytics")}
-            className="flex items-center gap-3 text-black dark:text-gray-300 hover:bg-[#191919] hover:text-white p-2 rounded-lg transition duration-300"
-          >
-            <Users />
-            <span className="">User Insights</span>
-          </button>
-
-          <button
+          />
+          <NavItem
+            icon={Music}
+            label="Streaming Analytics"
             onClick={() => navigate("/stream-analytics")}
-            className="flex items-center gap-3 text-black dark:text-gray-300 hover:bg-[#191919] hover:text-white p-2 rounded-lg transition duration-300"
-          >
-            <Music />
-            <span className="">Streaming Analytics</span>
-          </button>
-
-          <button
+          />
+          <NavItem
+            icon={DollarSign}
+            label="Revenue Analytics"
             onClick={() => navigate("/revenue-analytics")}
-            className="flex items-center gap-3 text-black dark:text-gray-300 hover:bg-[#191919] hover:text-white p-2 rounded-lg transition duration-300"
-          >
-            <DollarSign />
-            <span className="">Revenue Analytics</span>
-          </button>
-
-          <button
+          />
+          <NavItem
+            icon={Settings}
+            label="Settings"
             onClick={() => navigate("/settings")}
             disabled
-            className="flex items-center gap-3 text-black dark:text-gray-300 hover:bg-[#191919] hover:text-white p-2 rounded-lg transition duration-300"
-          >
-            <Settings />
-            <span className="">Settings</span>
-          </button>
-          {!loginClicked ? (
-            <button
-              onClick={() => {
-                setIsLoginClicked(true);
-              }}
-              className="flex items-center gap-3 text-black dark:text-gray-300 hover:bg-[#191919] hover:text-white p-2 rounded-lg transition duration-300"
-            >
-              <LogIn />
-              <span>Login</span>
-            </button>
-          ) : (
-            <button
-              onClick={() => {
-                setIsLoginClicked(false);
-              }}
-              className="flex items-center gap-3 text-black dark:text-gray-300 hover:bg-[#191919] hover:text-white p-2 rounded-lg transition duration-300"
-            >
-              <LogOut />
-              <span>Logout</span>
-            </button>
-          )}
+          />
+          <LoginButton
+            isLoggedIn={loginClicked}
+            toggleLogin={handleLoginClick}
+          />
         </nav>
       </SheetContent>
     </Sheet>

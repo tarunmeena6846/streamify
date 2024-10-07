@@ -3,7 +3,7 @@ import { Play, Pause, SkipBack, SkipForward } from "lucide-react"; // Use approp
 
 export const MusicPlayerBar = ({ currentSong }) => {
   const [isPlaying, setIsPlaying] = useState(false);
-
+  console.log(currentSong);
   const togglePlayPause = () => {
     setIsPlaying(!isPlaying);
   };

@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { MusicPlayerBar } from "./MusicPlayer";
 
-const SongThumbnailCard = ({ song }) => {
+const SongThumbnailCard = ({ song, onClick }) => {
   return (
-    <div className="flex flex-col items-center  ">
+    <div className="flex flex-col items-center" onClick={() => onClick(song)}>
       {/* Album Cover */}
       <div className="shadow-lg">
         <img src={song.image} alt={song.title} className="h-40 rounded-2xl" />
@@ -23,6 +23,8 @@ const SongThumbnailCard = ({ song }) => {
 };
 
 const SongThumbnailGrid = () => {
+  const [currentSong, setCurrentSong] = useState(null);
+
   const songs = [
     {
       title: "Vocal Studies and Uprock Narratives",
@@ -80,12 +82,16 @@ const SongThumbnailGrid = () => {
       <h2 className="text-white text-xl mb-4">Top Albums</h2>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-4 mb-8">
         {songs.map((song, index) => (
-          <>
-            <SongThumbnailCard key={index} song={song} />
-            <MusicPlayerBar key={index} currentSong={song} />
-          </>
+          <SongThumbnailCard
+            key={index}
+            song={song}
+            onClick={(selectedSong) => setCurrentSong(selectedSong)}
+          />
         ))}
       </div>
+
+      {/* Music Player */}
+      {currentSong && <MusicPlayerBar currentSong={currentSong} />}
     </div>
   );
 };

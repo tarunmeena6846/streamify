@@ -157,7 +157,9 @@ export function RevenueAnalytics() {
           {/* Total Revenue */}
           <Card className="col-span-1 md:col-span-2 md:row-span-1">
             <CardHeader className="text-xl font-bold">Total Revenue</CardHeader>
-            <CardContent>{revenueData.totalAggregate}</CardContent>
+            <CardContent>
+              ${revenueData.totalAggregate.toLocaleString()}
+            </CardContent>
           </Card>
 
           {/* Projected Revenue */}
@@ -165,13 +167,15 @@ export function RevenueAnalytics() {
             <CardHeader className="text-xl font-bold">
               Projected Revenue
             </CardHeader>
-            <CardContent>{revenueData.projectedRevenue}</CardContent>
+            <CardContent>
+              ${revenueData.projectedRevenue.toLocaleString()}
+            </CardContent>
           </Card>
 
           {/* Total Profit */}
           <Card className="md:col-span-2 row-span-1">
             <CardHeader className="text-xl font-bold">Total Profit</CardHeader>
-            <CardContent>{revenueData.profit}</CardContent>
+            <CardContent>${revenueData.profit.toLocaleString()}</CardContent>
           </Card>
 
           {/* Revenue Distribution Chart */}
@@ -209,7 +213,9 @@ export function RevenueAnalytics() {
                   />
                   <div className="text-center md:text-left">
                     <h2 className="text-lg font-semibold">{artist.artist}</h2>
-                    <h2 className="text-sm text-gray-500">{artist.revenue}</h2>
+                    <h2 className="text-sm text-gray-500">
+                      ${artist.revenue.toLocaleString()}
+                    </h2>
                   </div>
                 </div>
               ))}
@@ -233,7 +239,9 @@ export function RevenueAnalytics() {
                   <div className="text-center md:text-left">
                     <h2 className="text-lg font-semibold">{song.song}</h2>
                     <h2 className="text-sm font-semibold">{song.artist}</h2>
-                    <h2 className="text-sm text-gray-500">{song.revenue}</h2>
+                    <h2 className="text-sm text-gray-500">
+                      ${song.revenue.toLocaleString()}
+                    </h2>
                   </div>
                 </div>
               ))}
@@ -241,7 +249,7 @@ export function RevenueAnalytics() {
           </Card>
 
           {/* Choropleth Map */}
-          <div className="col-span-1 md:col-span-6 md:row-span-2">
+          <div className="col-span-1  md:col-span-6 md:row-span-2">
             <ChoroplethMap />
           </div>
         </div>

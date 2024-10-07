@@ -143,7 +143,9 @@ export default function USChoroplethMap() {
                         pressed: { outline: "none", opacity: 0.8 },
                       }}
                       onMouseEnter={() => {
-                        setTooltipContent(`${cur?.state}: $${cur?.revenue}`);
+                        setTooltipContent(
+                          `${cur?.state}: $${cur?.revenue.toLocaleString()}`
+                        );
                       }}
                       onMouseLeave={() => {
                         setTooltipContent("");
@@ -167,7 +169,7 @@ export default function USChoroplethMap() {
               {tooltipContent}
             </div>
           )}
-          <div className="absolute bottom-0 left-0 bg-white bg-opacity-80 p-2 rounded-md ">
+          <div className="absolute bottom-0 left-0 bg-white bg-opacity-80 p-2 rounded-md hidden md:block ">
             <div className="text-sm font-semibold mb-1">Revenue</div>
             <div className="flex items-center space-x-1">
               {colorScale.range().map((color, i) => (
@@ -179,8 +181,12 @@ export default function USChoroplethMap() {
               ))}
             </div>
             <div className="flex justify-between text-xs mt-1">
-              <span>${Math.min(...data.map((d) => d.revenue)).toFixed(1)}</span>
-              <span>${Math.max(...data.map((d) => d.revenue)).toFixed(1)}</span>
+              <span>
+                ${Math.min(...data.map((d) => d.revenue)).toLocaleString()}
+              </span>
+              <span>
+                ${Math.max(...data.map((d) => d.revenue)).toLocaleString()}
+              </span>
             </div>
           </div>
         </div>

@@ -15,7 +15,7 @@ export const ArtistCard = ({ artist }) => {
         className="rounded-full w-20 h-20 object-cover"
       />
       <h2 className="text-lg font-semibold mt-2">{artist.name}</h2>
-      <h2 className="text-sm text-gray-500">{`(${artist.streams} streams)`}</h2>
+      <h2 className="text-sm text-gray-500">{`(${artist.streams.toLocaleString()} streams)`}</h2>
     </div>
   );
 };
@@ -42,7 +42,7 @@ const SongCard = ({ title, artist, image, streams }) => {
         className="rounded-full w-20 h-20 object-cover"
       />
       <h2 className="text-lg font-semibold mt-2">{title}</h2>
-      <h2 className="text-sm text-gray-500">{`(${streams} streams)`}</h2>
+      <h2 className="text-sm text-gray-500">{`(${streams.toLocaleString()} streams)`}</h2>
     </div>
   );
 };
@@ -96,7 +96,9 @@ export function StreamAnalytics() {
         <div className="col-span-1 row-span-1 md:col-span-2 md:row-span-2 ">
           <Card className="">
             <CardHeader className="text-xl font-bold">Total Streams</CardHeader>
-            <CardContent>{keyMetrics.totalStreams}</CardContent>
+            <CardContent>
+              {keyMetrics.totalStreams.toLocaleString()}
+            </CardContent>
           </Card>
           <TopArtists artists={keyMetrics.topArtist} />
         </div>
