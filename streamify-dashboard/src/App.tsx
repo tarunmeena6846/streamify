@@ -7,6 +7,8 @@ import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import { Dashboard } from "./components/Modules/Dashboard";
 import { StreamAnalytics } from "./components/Modules/StreamAnalytics";
 import { RevenueAnalytics } from "./components/Modules/RevenueAnalytics";
+import { makeServer } from "./server";
+makeServer();
 function App() {
   return (
     <RecoilRoot>

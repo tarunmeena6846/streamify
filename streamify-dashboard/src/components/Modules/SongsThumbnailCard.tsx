@@ -1,81 +1,39 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { MusicPlayerBar } from "./MusicPlayer";
+import { Song } from "@/lib/types";
 
-const SongThumbnailCard = ({ song, onClick }) => {
-  return (
-    <div className="flex flex-col items-center" onClick={() => onClick(song)}>
-      {/* Album Cover */}
-      <div className="shadow-lg">
-        <img src={song.image} alt={song.title} className="h-40 rounded-2xl" />
+const SongThumbnailCard = React.memo(
+  ({ song, onClick }: { song: Song; onClick: (song: Song) => void }) => {
+    console.log("tarun Rendering SongThumbnailCard for:", song.title);
+
+    return (
+      <div className="flex flex-col items-center" onClick={() => onClick(song)}>
+        {/* Album Cover */}
+        <div className="shadow-lg">
+          <img src={song.image} alt={song.title} className="h-40 rounded-2xl" />
+        </div>
+
+        {/* Song Info */}
+        <div className="mt-2 text-center">
+          <p className="text-black dark:text-white text-sm font-semibold truncate w-full">
+            {song.title.length > 20
+              ? `${song.title.slice(0, 20)}...`
+              : song.title}
+          </p>
+          <p className="text-gray-400 text-xs truncate">{song.artist}</p>
+        </div>
       </div>
+    );
+  }
+);
 
-      {/* Song Info */}
-      <div className="mt-2 text-center">
-        <p className="text-black dark:text-white text-sm font-semibold truncate w-full">
-          {song.title.length > 20
-            ? `${song.title.slice(0, 20)}...`
-            : song.title}
-        </p>
-        <p className="text-gray-400 text-xs truncate">{song.artist}</p>
-      </div>
-    </div>
-  );
-};
+const SongThumbnailGrid = React.memo(({ songs }: { songs: Song[] }) => {
+  const [currentSong, setCurrentSong] = useState<Song | null>(null);
+  const handleSongClick = useCallback((selectedSong: Song) => {
+    console.log("tarun Song clicked:", selectedSong);
 
-const SongThumbnailGrid = () => {
-  const [currentSong, setCurrentSong] = useState(null);
-
-  const songs = [
-    {
-      title: "Vocal Studies and Uprock Narratives",
-      artist: "Prefuse 73",
-      image: "./image4.png",
-      time: "03:37",
-    },
-    {
-      title: "Temples",
-      artist: "Lone",
-      image: "./image1.jpg",
-      time: "04:45",
-    },
-    {
-      title: "Earth Tones",
-      artist: "Lenzman",
-      image: "./iimage2.jpg",
-      time: "03:23",
-    },
-    {
-      title: "Kollections 06",
-      artist: "VA",
-      image: "./image3.jpeg",
-      time: "05:12",
-    },
-    {
-      title: "Blinding Lights",
-      artist: "The Weeknd",
-      image: "./image5.jpg",
-      time: "03:20",
-    },
-    {
-      title: "Levitating",
-      artist: "Dua Lipa",
-      image: "./image6.jpg",
-      time: "03:23",
-    },
-    {
-      title: "Good 4 U",
-      artist: "Olivia Rodrigo",
-      image: "./image7.jpg",
-      time: "02:58",
-    },
-    {
-      title: "Peaches",
-      artist: "Justin Bieber",
-      image: "./image8.jpg",
-      time: "03:18",
-    },
-  ];
-
+    setCurrentSong(selectedSong);
+  }, []);
   return (
     <div className="container mx-auto py-6">
       {/* Thumbnail Grid */}
@@ -85,7 +43,7 @@ const SongThumbnailGrid = () => {
           <SongThumbnailCard
             key={index}
             song={song}
-            onClick={(selectedSong) => setCurrentSong(selectedSong)}
+            onClick={handleSongClick}
           />
         ))}
       </div>
@@ -94,6 +52,6 @@ const SongThumbnailGrid = () => {
       {currentSong && <MusicPlayerBar currentSong={currentSong} />}
     </div>
   );
-};
+});
 
 export default SongThumbnailGrid;

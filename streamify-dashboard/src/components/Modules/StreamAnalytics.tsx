@@ -1,10 +1,11 @@
 import { Car, Heart, Play } from "lucide-react";
 import { Card, CardContent, CardHeader } from "../ui/card";
 import DashboardLayout from "./DashboardLayout";
-import { keyMetrics, topStreamedSongs } from "./Dashboard";
+// import { keyMetrics, topStreamedSongs } from "./Dashboard";
 import { Button } from "../ui/button";
 import { RecentStreamsTable } from "./RecentStreamTable";
 import { Separator } from "../ui/separator";
+import { useEffect, useState } from "react";
 
 export const ArtistCard = ({ artist }) => {
   return (
@@ -21,6 +22,7 @@ export const ArtistCard = ({ artist }) => {
 };
 
 const TopArtists = ({ artists }) => {
+  console.log(artists);
   return (
     <div className="cols-span-1 row-span-1 md:col-span-2 md:row-span-1 space-y-2 mt-4 ">
       <h2 className="text-xl font-bold mb-4 ">Monthly Top Artists</h2>
@@ -49,7 +51,7 @@ const SongCard = ({ title, artist, image, streams }) => {
 const TopStreamedSongCard = ({ topStreamedSongs }) => {
   return (
     <div className="col-span-1 row-span-1 md:col-span-4 md:row-span-1 flex justify-center flex-col">
-      <h2 className="text-xl font-bold mb-4">Top Streamed Songs</h2>
+      <h2 className="text-xl font-bold mb-4">Most Searched Songs</h2>
       <div className="flex justify-between pt-2 flex-wrap ">
         {topStreamedSongs.map((song, index) => (
           <SongCard
@@ -67,6 +69,21 @@ const TopStreamedSongCard = ({ topStreamedSongs }) => {
 };
 
 export function StreamAnalytics() {
+  const [topArtists, setTopArtists] = useState([]);
+  const [recentStreams, setRecentStreams] = useState([]);
+  const [totalStreams, setTotalStreams] = useState(0);
+  const [mostSearchedSongs, setMostSearchedSongs] = useState([]);
+  useEffect(() => {
+    fetch("/api/stream-matrics")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("tarun data at recent", data);
+        setTopArtists(data.topArtist);
+        setRecentStreams(data.recentStreams);
+        setTotalStreams(data.totalStreams);
+        setMostSearchedSongs(data.mostSearchedSongs);
+      });
+  }, []);
   return (
     <DashboardLayout>
       <div className="grid grid-cols-1 grid-rows-5 md:grid-cols-6  gap-4">
@@ -96,14 +113,12 @@ export function StreamAnalytics() {
         <div className="col-span-1 row-span-1 md:col-span-2 md:row-span-2 ">
           <Card className="">
             <CardHeader className="text-xl font-bold">Total Streams</CardHeader>
-            <CardContent>
-              {keyMetrics.totalStreams.toLocaleString()}
-            </CardContent>
+            <CardContent>{totalStreams.toLocaleString()}</CardContent>
           </Card>
-          <TopArtists artists={keyMetrics.topArtist} />
+          <TopArtists artists={topArtists} />
         </div>
-        <TopStreamedSongCard topStreamedSongs={topStreamedSongs} />
-        <RecentStreamsTable />
+        <TopStreamedSongCard topStreamedSongs={mostSearchedSongs} />
+        <RecentStreamsTable recentStreams={recentStreams} />
       </div>
     </DashboardLayout>
   );

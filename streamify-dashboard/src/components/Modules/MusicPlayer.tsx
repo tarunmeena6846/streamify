@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Play, Pause, SkipBack, SkipForward } from "lucide-react"; // Use appropriate icons from Lucide
+import { Song } from "@/lib/types";
 
-export const MusicPlayerBar = ({ currentSong }) => {
+export const MusicPlayerBar = ({ currentSong }: { currentSong: Song }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   console.log(currentSong);
   const togglePlayPause = () => {
