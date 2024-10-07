@@ -21,7 +21,7 @@ import {
 } from "@tanstack/react-table";
 
 import { Button } from "@/components/ui/button";
-// import { Checkbox } from "@/components/ui/checkbox";
+
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -42,114 +42,6 @@ import {
 } from "@/components/ui/table";
 import { StreamData } from "@/lib/types";
 import { Separator } from "../ui/separator";
-
-// const recentStreams = [
-//   {
-//     song: "Mad Love",
-//     artist: "Mable",
-//     date: "2024-09-29",
-//     streamCount: 1500,
-//     userId: "user_001",
-//   },
-//   {
-//     song: "Blinding Lights",
-//     artist: "The Weeknd",
-//     date: "2024-09-28",
-//     streamCount: 2500,
-//     userId: "user_002",
-//   },
-//   {
-//     song: "Levitating",
-//     artist: "Dua Lipa",
-//     date: "2024-09-27",
-//     streamCount: 1200,
-//     userId: "user_003",
-//   },
-//   {
-//     song: "Watermelon Sugar",
-//     artist: "Harry Styles",
-//     date: "2024-09-26",
-//     streamCount: 1800,
-//     userId: "user_004",
-//   },
-//   {
-//     song: "Shape of You",
-//     artist: "Ed Sheeran",
-//     date: "2024-09-25",
-//     streamCount: 3000,
-//     userId: "user_005",
-//   },
-//   {
-//     song: "Good 4 U",
-//     artist: "Olivia Rodrigo",
-//     date: "2024-09-24",
-//     streamCount: 2100,
-//     userId: "user_006",
-//   },
-//   {
-//     song: "Stay",
-//     artist: "The Kid LAROI & Justin Bieber",
-//     date: "2024-09-23",
-//     streamCount: 3200,
-//     userId: "user_007",
-//   },
-//   {
-//     song: "Peaches",
-//     artist: "Justin Bieber",
-//     date: "2024-09-22",
-//     streamCount: 2800,
-//     userId: "user_008",
-//   },
-//   {
-//     song: "drivers license",
-//     artist: "Olivia Rodrigo",
-//     date: "2024-09-21",
-//     streamCount: 2700,
-//     userId: "user_009",
-//   },
-//   {
-//     song: "Save Your Tears",
-//     artist: "The Weeknd",
-//     date: "2024-09-20",
-//     streamCount: 1900,
-//     userId: "user_010",
-//   },
-//   {
-//     song: "Deja Vu",
-//     artist: "Olivia Rodrigo",
-//     date: "2024-09-19",
-//     streamCount: 2200,
-//     userId: "user_011",
-//   },
-//   {
-//     song: "Montero (Call Me By Your Name)",
-//     artist: "Lil Nas X",
-//     date: "2024-09-18",
-//     streamCount: 3400,
-//     userId: "user_012",
-//   },
-//   {
-//     song: "Butter",
-//     artist: "BTS",
-//     date: "2024-09-17",
-//     streamCount: 4500,
-//     userId: "user_013",
-//   },
-//   {
-//     song: "Kiss Me More",
-//     artist: "Doja Cat ft. SZA",
-//     date: "2024-09-16",
-//     streamCount: 2600,
-//     userId: "user_014",
-//   },
-//   {
-//     song: "Levitating (feat. DaBaby)",
-//     artist: "Dua Lipa",
-//     date: "2024-09-15",
-//     streamCount: 3500,
-//     userId: "user_015",
-//   },
-// ];
 
 const columns: ColumnDef<StreamData>[] = [
   {
