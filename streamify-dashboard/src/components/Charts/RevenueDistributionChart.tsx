@@ -23,6 +23,7 @@ const colorPalette = [
 ];
 
 export function RevenueDistributionChart({ revenueData }) {
+  console.log(revenueData);
   const isDarkMode = useTheme().theme === "dark";
   const [selectedMonth, setSelectedMonth] = useState(revenueData[0].month); // Default to the first month
 

@@ -17,7 +17,6 @@ export function Hero() {
       .catch((error) => console.error("Error fetching songs:", error));
   }, []);
 
-  // console.log("tarun trending song", trendingSongs);
   return (
     <div className="flex flex-col lg:flex-row gap-4">
       <div className="w-auto ">

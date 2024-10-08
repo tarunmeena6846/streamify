@@ -1,13 +1,7 @@
 import * as React from "react";
-import {
-  CaretSortIcon,
-  ChevronDownIcon,
-  DotsHorizontalIcon,
-} from "@radix-ui/react-icons";
+import { CaretSortIcon, ChevronDownIcon } from "@radix-ui/react-icons";
 import {
   ColumnDef,
-  //   ColumnDef,
-  ColumnFiltersState,
   SortingState,
   VisibilityState,
   flexRender,
@@ -24,9 +18,6 @@ import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
@@ -42,25 +33,9 @@ import { Song } from "@/lib/types";
 import { Separator } from "../ui/separator";
 
 const columns: ColumnDef<Song>[] = [
-  // {
-  //   accessorKey: "artist.name",
-  //   header: ({ column }) => (
-  //     <Button
-  //       variant="ghost"
-  //       onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-  //     >
-  //       Artist
-  //       <CaretSortIcon className="ml-2 h-4 w-4" />
-  //     </Button>
-  //   ),
-  //   cell: ({ row }) => (
-  //     <div className="text-center">{row.getValue("artist.name")}</div>
-  //   ),
-  //   enableSorting: true,
-  // },
   {
-    accessorFn: (row) => row.artist?.name, // Use accessorFn for nested fields
-    id: "artistName", // Specify a unique id since we're using accessorFn
+    accessorFn: (row) => row.artist?.name,
+    id: "artistName",
     header: ({ column }) => (
       <Button
         variant="ghost"
@@ -160,9 +135,8 @@ export function RecentStreamsTable({
     columns,
     onSortingChange: setSorting,
     globalFilterFn: (row, columnIds, filterValue) => {
-      const artistName = row.getValue("artistName")?.toLowerCase() || "";
-      const title = row.getValue("title") || "";
-      // console.log("tarun artist and title", artist, title, filterValue);
+      const artistName: string = row.getValue("artistName") || "";
+      const title: string = row.getValue("title") || "";
       return (
         artistName.toLowerCase().includes(filterValue.toLowerCase()) ||
         title.toLowerCase().includes(filterValue.toLowerCase())
