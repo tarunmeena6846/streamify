@@ -14,62 +14,6 @@ import {
 // US map topojson data
 const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
 
-// Data for all states (unemployment rates as of September 2023)
-// const data = [
-//   { id: "01", state: "Alabama", revenue: 34399 },
-//   { id: "02", state: "Alaska", revenue: 67122 },
-//   { id: "04", state: "Arizona", revenue: 65444 },
-//   { id: "05", state: "Arkansas", revenue: 50719 },
-//   { id: "06", state: "California", revenue: 76945 },
-//   { id: "08", state: "Colorado", revenue: 50719 },
-//   { id: "09", state: "Connecticut", revenue: 57268 },
-//   { id: "10", state: "Delaware", revenue: 67122 },
-//   { id: "12", state: "Florida", revenue: 45894 },
-//   { id: "13", state: "Georgia", revenue: 52429 },
-//   { id: "15", state: "Hawaii", revenue: 49009 },
-//   { id: "16", state: "Idaho", revenue: 52429 },
-//   { id: "17", state: "Illinois", revenue: 67122 },
-//   { id: "18", state: "Indiana", revenue: 54039 },
-//   { id: "19", state: "Iowa", revenue: 42679 },
-//   { id: "20", state: "Kansas", revenue: 44389 },
-//   { id: "21", state: "Kentucky", revenue: 65444 },
-//   { id: "22", state: "Louisiana", revenue: 57268 },
-//   { id: "23", state: "Maine", revenue: 44389 },
-//   { id: "24", state: "Maryland", revenue: 31269 },
-//   { id: "25", state: "Massachusetts", revenue: 45894 },
-//   { id: "26", state: "Michigan", revenue: 60688 },
-//   { id: "27", state: "Minnesota", revenue: 47604 },
-//   { id: "28", state: "Mississippi", revenue: 52429 },
-//   { id: "29", state: "Missouri", revenue: 40969 },
-//   { id: "30", state: "Montana", revenue: 45894 },
-//   { id: "31", state: "Nebraska", revenue: 34399 },
-//   { id: "32", state: "Nevada", revenue: 88401 },
-//   { id: "33", state: "New Hampshire", revenue: 34399 },
-//   { id: "34", state: "New Jersey", revenue: 71970 },
-//   { id: "35", state: "New Mexico", revenue: 62128 },
-//   { id: "36", state: "New York", revenue: 62128 },
-//   { id: "37", state: "North Carolina", revenue: 57268 },
-//   { id: "38", state: "North Dakota", revenue: 31269 },
-//   { id: "39", state: "Ohio", revenue: 55728 },
-//   { id: "40", state: "Oklahoma", revenue: 52429 },
-//   { id: "41", state: "Oregon", revenue: 59009 },
-//   { id: "42", state: "Pennsylvania", revenue: 55728 },
-//   { id: "44", state: "Rhode Island", revenue: 44389 },
-//   { id: "45", state: "South Carolina", revenue: 50719 },
-//   { id: "46", state: "South Dakota", revenue: 32709 },
-//   { id: "47", state: "Tennessee", revenue: 52429 },
-//   { id: "48", state: "Texas", revenue: 67122 },
-//   { id: "49", state: "Utah", revenue: 37634 },
-//   { id: "50", state: "Vermont", revenue: 32709 },
-//   { id: "51", state: "Virginia", revenue: 44389 },
-//   { id: "53", state: "Washington", revenue: 60688 },
-//   { id: "54", state: "West Virginia", revenue: 65444 },
-//   { id: "55", state: "Wisconsin", revenue: 52429 },
-//   { id: "56", state: "Wyoming", revenue: 54039 },
-// ];
-
-// Total revenue sum: 1,731,000
-
 export default function USChoroplethMap({ revenueByState }) {
   const [tooltipContent, setTooltipContent] = useState("");
   const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
