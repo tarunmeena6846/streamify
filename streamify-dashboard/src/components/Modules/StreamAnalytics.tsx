@@ -1,32 +1,30 @@
 import { Car, Heart, Play } from "lucide-react";
 import { Card, CardContent, CardHeader } from "../ui/card";
 import DashboardLayout from "./DashboardLayout";
-// import { keyMetrics, topStreamedSongs } from "./Dashboard";
-import { Button } from "../ui/button";
 import { RecentStreamsTable } from "./RecentStreamTable";
-import { Separator } from "../ui/separator";
 import { useEffect, useState } from "react";
 
 export const ArtistCard = ({ artist }) => {
+  console.log("tarun artist in card", artist);
   return (
     <div className="flex flex-col items-center">
       <img
         src={artist.image}
-        alt={artist.name}
+        alt={artist.artist.name}
         className="rounded-full w-20 h-20 object-cover"
       />
-      <h2 className="text-lg font-semibold mt-2">{artist.name}</h2>
-      <h2 className="text-sm text-gray-500">{`(${artist.streams.toLocaleString()} streams)`}</h2>
+      <h2 className="text-lg font-semibold mt-2 ">{artist.artist.name}</h2>
+      <h2 className="text-sm text-gray-500">{`(${artist.streamCount.toLocaleString()} streams)`}</h2>
     </div>
   );
 };
 
 const TopArtists = ({ artists }) => {
-  console.log(artists);
+  console.log("tarun artist", artists);
   return (
-    <div className="cols-span-1 row-span-1 md:col-span-2 md:row-span-1 space-y-2 mt-4 ">
+    <div className="space-y-2 mt-4 ">
       <h2 className="text-xl font-bold mb-4 ">Monthly Top Artists</h2>
-      <div className="grid grid-cols-2 grid-rows-2 gap-4">
+      <div className="grid grid-cols-3 grid-rows-2 gap-4">
         {artists.map((artist, index) => (
           <ArtistCard key={index} artist={artist} />
         ))}
@@ -40,7 +38,7 @@ const SongCard = ({ title, artist, image, streams }) => {
     <div className="flex flex-col items-center">
       <img
         src={image}
-        alt={artist}
+        alt={artist.name}
         className="rounded-full w-20 h-20 object-cover"
       />
       <h2 className="text-lg font-semibold mt-2">{title}</h2>
@@ -50,16 +48,16 @@ const SongCard = ({ title, artist, image, streams }) => {
 };
 const TopStreamedSongCard = ({ topStreamedSongs }) => {
   return (
-    <div className="col-span-1 row-span-1 md:col-span-4 md:row-span-1 flex justify-center flex-col">
+    <div className="order-4 md:order-none md:col-span-4 flex justify-center flex-col">
       <h2 className="text-xl font-bold mb-4">Most Searched Songs</h2>
       <div className="flex justify-between pt-2 flex-wrap ">
         {topStreamedSongs.map((song, index) => (
           <SongCard
             key={index}
             title={song.title}
-            artist={song.artist}
+            artist={song.artist.name}
             image={song.image}
-            streams={song.streams}
+            streams={song.streamCount}
           />
         ))}
       </div>
@@ -86,38 +84,50 @@ export function StreamAnalytics() {
   }, []);
   return (
     <DashboardLayout>
-      <div className="grid grid-cols-1 grid-rows-5 md:grid-cols-6  gap-4">
-        <div className="col-span-1 row-span-1 md:col-span-4 md:row-span-1 flex justify-between gap-4 bg-[#fbeceb] text-black  rounded-3xl">
-          <div className="flex flex-col justify-center mx-6">
+      <div className="grid gap-4 grid-cols-1 w-full md:grid-cols-6 ">
+        {/* <div className="container mx-auto"> */}
+        {/* Added padding on mobile */}
+        {/* Hero section */}
+        <div className="order-1 md:order-none col-span-1 md:col-span-4 bg-[#fbeceb] text-black rounded-3xl flex flex-col md:flex-row justify-between overflow-hidden">
+          <div className="flex flex-col justify-center p-6 w-full md:w-1/4">
             <h2 className="text-sm">Mable</h2>
             <h2 className="font-bold text-3xl mb-6">Mad Love</h2>
-            <h2 className="text-sm">
+            <p className="text-sm">
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry.
-            </h2>
-            <div className="flex flex-row mt-4 gap-2">
-              <button className="flex gap-2 bg-[#e47e74] text-white  p-2 rounded-lg px-3">
-                <Play className="" />
+            </p>
+            <div className="flex mt-4 gap-2">
+              <button className="flex gap-2 bg-[#e47e74] text-white p-2 rounded-lg items-center">
+                <Play />
                 Play Now
               </button>
-
-              <button className="bg-[#e47e74]  text-white p-2 rounded-lg hover:bg-blue-700">
+              <button className="bg-[#e47e74] text-white p-2 rounded-lg">
                 <Heart />
               </button>
             </div>
           </div>
-          <div className="flex items-end">
-            <img src="./stream1.png" className=" "></img>
+          <div className="w-full md:w-3/4">
+            <img
+              src="./stream1.png"
+              alt="Stream"
+              className="w-full h-full object-cover"
+            />
           </div>
         </div>
-        <div className="col-span-1 row-span-1 md:col-span-2 md:row-span-2 ">
-          <Card className="">
+        {/* Total Streams */}
+
+        <div className="order-3 md:order-none col-span-1 md:col-span-2">
+          <TopArtists artists={topArtists} />
+        </div>
+        <div className="order-2 md:order-none col-span-1 md:col-span-2 ">
+          <Card className="h-full">
             <CardHeader className="text-xl font-bold">Total Streams</CardHeader>
             <CardContent>{totalStreams.toLocaleString()}</CardContent>
           </Card>
-          <TopArtists artists={topArtists} />
         </div>
         <TopStreamedSongCard topStreamedSongs={mostSearchedSongs} />
+        {/* Recent Streams Table */}
+
         <RecentStreamsTable recentStreams={recentStreams} />
       </div>
     </DashboardLayout>

@@ -1,5 +1,3 @@
-"use client";
-
 import * as React from "react";
 import {
   CaretSortIcon,
@@ -40,12 +38,29 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { StreamData } from "@/lib/types";
+import { Song } from "@/lib/types";
 import { Separator } from "../ui/separator";
 
-const columns: ColumnDef<StreamData>[] = [
+const columns: ColumnDef<Song>[] = [
+  // {
+  //   accessorKey: "artist.name",
+  //   header: ({ column }) => (
+  //     <Button
+  //       variant="ghost"
+  //       onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+  //     >
+  //       Artist
+  //       <CaretSortIcon className="ml-2 h-4 w-4" />
+  //     </Button>
+  //   ),
+  //   cell: ({ row }) => (
+  //     <div className="text-center">{row.getValue("artist.name")}</div>
+  //   ),
+  //   enableSorting: true,
+  // },
   {
-    accessorKey: "artist",
+    accessorFn: (row) => row.artist?.name, // Use accessorFn for nested fields
+    id: "artistName", // Specify a unique id since we're using accessorFn
     header: ({ column }) => (
       <Button
         variant="ghost"
@@ -56,7 +71,7 @@ const columns: ColumnDef<StreamData>[] = [
       </Button>
     ),
     cell: ({ row }) => (
-      <div className="text-center">{row.getValue("artist")}</div>
+      <div className="text-center">{row.getValue("artistName")}</div>
     ),
     enableSorting: true,
   },
@@ -128,23 +143,28 @@ const columns: ColumnDef<StreamData>[] = [
   },
 ];
 
-export function RecentStreamsTable({ recentStreams }) {
+export function RecentStreamsTable({
+  recentStreams,
+}: {
+  recentStreams: Song[];
+}) {
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [globalFilter, setGlobalFilter] = React.useState<string>("");
 
   const [columnVisibility, setColumnVisibility] =
     React.useState<VisibilityState>({});
-  //   const [rowSelection, setRowSelection] = React.useState({});
 
+  console.log("recentStreams", recentStreams);
   const table = useReactTable({
     data: recentStreams,
     columns,
     onSortingChange: setSorting,
     globalFilterFn: (row, columnIds, filterValue) => {
-      const artist = row.getValue("artist") || "";
+      const artistName = row.getValue("artistName")?.toLowerCase() || "";
       const title = row.getValue("title") || "";
+      // console.log("tarun artist and title", artist, title, filterValue);
       return (
-        artist.toLowerCase().includes(filterValue.toLowerCase()) ||
+        artistName.toLowerCase().includes(filterValue.toLowerCase()) ||
         title.toLowerCase().includes(filterValue.toLowerCase())
       );
     },
@@ -163,7 +183,7 @@ export function RecentStreamsTable({ recentStreams }) {
   });
 
   return (
-    <div className="row-span-2 col-span-1 md:col-span-6">
+    <div className="order-5 md:order-none row-span-2 col-span-1 md:col-span-6">
       <Separator className="my-6"></Separator>
       <h2 className="text-xl font-bold">Recent Streams</h2>
       <div className="flex items-center py-4">
@@ -206,6 +226,7 @@ export function RecentStreamsTable({ recentStreams }) {
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => {
+                  // console.log("tarun header", header.column.columnDef.header);
                   return (
                     <TableHead key={header.id} className="text-center">
                       {header.isPlaceholder

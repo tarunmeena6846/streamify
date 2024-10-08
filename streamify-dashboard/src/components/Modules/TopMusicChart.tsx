@@ -40,7 +40,7 @@ const SongListCard = ({ song }: { song: Song }) => {
               {song.title}
             </span>
             <span className="text-sm text-gray-500 dark:text-gray-400">
-              {song.artist}
+              {song.artist.name}
             </span>
           </div>
         </div>

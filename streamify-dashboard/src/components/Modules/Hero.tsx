@@ -8,17 +8,16 @@ export function Hero() {
   const [trendingSongs, setTrendingSongs] = useState<Song[]>([]);
 
   useEffect(() => {
-    // console.log("tarun at fetch");
     fetch("/api/top-songs")
       .then((response) => response.json())
       .then((data) => {
-        // console.log("tarun data", data);
         setSongs(data.songs);
         setTrendingSongs(data.trendingSongs);
-        // localStorage.setItem("topSongs", JSON.stringify(data.songs)); // Cache it
       })
       .catch((error) => console.error("Error fetching songs:", error));
   }, []);
+
+  // console.log("tarun trending song", trendingSongs);
   return (
     <div className="flex flex-col lg:flex-row gap-4">
       <div className="w-auto ">

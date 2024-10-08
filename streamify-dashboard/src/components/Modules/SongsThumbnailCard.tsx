@@ -9,7 +9,7 @@ const SongThumbnailCard = React.memo(
     return (
       <div className="flex flex-col items-center" onClick={() => onClick(song)}>
         {/* Album Cover */}
-        <div className="shadow-lg">
+        <div className="shadow-lg cursor-pointer">
           <img src={song.image} alt={song.title} className="h-40 rounded-2xl" />
         </div>
 
@@ -20,7 +20,7 @@ const SongThumbnailCard = React.memo(
               ? `${song.title.slice(0, 20)}...`
               : song.title}
           </p>
-          <p className="text-gray-400 text-xs truncate">{song.artist}</p>
+          <p className="text-gray-400 text-xs truncate">{song.artist.name}</p>
         </div>
       </div>
     );

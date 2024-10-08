@@ -22,7 +22,9 @@ export const MusicPlayerBar = ({ currentSong }: { currentSong: Song }) => {
         </div>
         <div className="flex flex-col">
           <span className="font-semibold">{currentSong.title}</span>
-          <span className="text-sm text-gray-400">{currentSong.artist}</span>
+          <span className="text-sm text-gray-400">
+            {currentSong.artist.name}
+          </span>
         </div>
       </div>
 
