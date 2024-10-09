@@ -1,22 +1,3 @@
-export type StreamData = {
-  // id: string;
-  artist: string;
-  song: string;
-  date: string;
-  streamCount: number;
-};
-
-// export type Song = {
-//   title: string;
-//   artist: string;
-//   image: string;
-//   time: string;
-//   streamCount: number;
-//   userId?: string;
-//   date: string | null;
-//   revenue: number | null;
-// };
-
 export type UserGrowthData = {
   month: string;
   totalUsers: number;
@@ -38,7 +19,7 @@ export type RevenueData = {
 
 export type MonthlyBreakdown = {
   month: string;
-  susbscriptions: number;
+  subscriptions: number;
   ads: number;
   inAppPurchases: number;
   promotions: number;
@@ -49,21 +30,26 @@ export type MonthlyBreakdown = {
 export type Artist = {
   name: string;
   image: string;
+  streamCount: number;
+  revenue: number;
 };
 
-// Define the Revenue type for songs
-
-// Define the common Song type
 export type Song = {
-  id: string; // Unique identifier for the song
-  title: string; // Song title
-  artist: Artist; // Artist information
-  album?: string; // Optional album field
-  image: string; // Song image or thumbnail
-  time: string; // Duration of the song
-  streamCount: number; // Total number of streams
-  userId?: string; // Optional field to associate a user with the song
-  date: string; // Date when the song was uploaded or streamed
-  revenue: number; // Optional revenue information if relevant
+  id: string;
+  title: string;
+  artist: Artist;
+  album?: string;
+  image: string;
+  time: string;
+  streamCount: number;
+  userId?: string;
+  date: string;
+  revenue: number;
   search: number;
+};
+
+export type StateRevenueType = {
+  id: string;
+  state: string;
+  revenue: number;
 };

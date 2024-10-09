@@ -5,7 +5,12 @@ const songData: Song[] = [
   {
     id: "song_001",
     title: "Vocal Studies and Uprock Narratives",
-    artist: { name: "Prefuse 73", image: "./image4.png" },
+    artist: {
+      name: "Prefuse 73",
+      image: "./image4.png",
+      streamCount: 1000,
+      revenue: 50000,
+    },
     image: "./image4.png",
     time: "03:37",
     streamCount: 5000,
@@ -17,7 +22,12 @@ const songData: Song[] = [
   {
     id: "song_002",
     title: "Temples",
-    artist: { name: "Lone", image: "./image1.jpg" },
+    artist: {
+      name: "Lone",
+      image: "./image1.jpg",
+      streamCount: 1000,
+      revenue: 60000,
+    },
     image: "./image1.jpg",
     time: "04:45",
     streamCount: 6000,
@@ -29,7 +39,12 @@ const songData: Song[] = [
   {
     id: "song_003",
     title: "Earth Tones",
-    artist: { name: "Lenzman", image: "./iimage2.jpg" },
+    artist: {
+      name: "Lenzman",
+      image: "./iimage2.jpg",
+      streamCount: 6000,
+      revenue: 150000,
+    },
     image: "./iimage2.jpg",
     time: "03:23",
     streamCount: 7000,
@@ -41,7 +56,12 @@ const songData: Song[] = [
   {
     id: "song_004",
     title: "Kollections 06",
-    artist: { name: "VA", image: "./image3.jpeg" },
+    artist: {
+      name: "VA",
+      image: "./image3.jpeg",
+      streamCount: 6020,
+      revenue: 15010,
+    },
     image: "./image3.jpeg",
     time: "05:12",
     streamCount: 6500,
@@ -53,7 +73,12 @@ const songData: Song[] = [
   {
     id: "song_005",
     title: "Blinding Lights",
-    artist: { name: "The Weeknd", image: "./image5.jpg" },
+    artist: {
+      name: "The Weeknd",
+      image: "./image5.jpg",
+      streamCount: 2010,
+      revenue: 1500,
+    },
     image: "./image5.jpg",
     time: "03:20",
     streamCount: 2500,
@@ -65,7 +90,12 @@ const songData: Song[] = [
   {
     id: "song_006",
     title: "Levitating",
-    artist: { name: "Dua Lipa", image: "./dua.jpg" },
+    artist: {
+      name: "Dua Lipa",
+      image: "./dua.jpg",
+      streamCount: 60230,
+      revenue: 11100,
+    },
     image: "./dua.jpg",
     time: "03:23",
     streamCount: 7300,
@@ -77,7 +107,12 @@ const songData: Song[] = [
   {
     id: "song_007",
     title: "Good 4 U",
-    artist: { name: "Olivia Rodrigo", image: "./image7.jpg" },
+    artist: {
+      name: "Olivia Rodrigo",
+      image: "./image7.jpg",
+      streamCount: 2200,
+      revenue: 4500,
+    },
     image: "./image7.jpg",
     time: "02:58",
     streamCount: 7100,
@@ -89,7 +124,12 @@ const songData: Song[] = [
   {
     id: "song_008",
     title: "Peaches",
-    artist: { name: "Justin Bieber", image: "./image8.jpg" },
+    artist: {
+      name: "Justin Bieber",
+      image: "./image8.jpg",
+      streamCount: 65600,
+      revenue: 12100,
+    },
     image: "./image8.jpg",
     time: "03:18",
     streamCount: 8800,
@@ -101,7 +141,12 @@ const songData: Song[] = [
   {
     id: "song_009",
     title: "Watermelon Sugar",
-    artist: { name: "Harry Styles", image: "./harry.jpeg" },
+    artist: {
+      name: "Harry Styles",
+      image: "./harry.jpeg",
+      streamCount: 60430,
+      revenue: 1110,
+    },
     image: "./harry.jpeg",
     time: "03:21",
     streamCount: 1800,
@@ -113,8 +158,13 @@ const songData: Song[] = [
   {
     id: "song_010",
     title: "Shape of You",
-    artist: { name: "Ed Sheeran", image: "./image10.jpg" },
-    image: "./image10.jpg",
+    artist: {
+      name: "Ed Sheeran",
+      image: "./ed.jpeg",
+      streamCount: 60220,
+      revenue: 15110,
+    },
+    image: "./ed.jpeg",
     time: "03:53",
     streamCount: 3000,
     userId: "user_005",
@@ -125,7 +175,12 @@ const songData: Song[] = [
   {
     id: "song_011",
     title: "Stay",
-    artist: { name: "The Kid LAROI & Justin Bieber", image: "./image11.jpg" },
+    artist: {
+      name: "The Kid LAROI & Justin Bieber",
+      image: "./image11.jpg",
+      streamCount: 610,
+      revenue: 15200,
+    },
     image: "./image11.jpg",
     time: "02:21",
     streamCount: 3200,
@@ -137,8 +192,13 @@ const songData: Song[] = [
   {
     id: "song_012",
     title: "drivers license",
-    artist: { name: "Olivia Rodrigo", image: "./image12.jpg" },
-    image: "./image12.jpg",
+    artist: {
+      name: "Olivia Rodrigo",
+      image: "./olivia.jpeg",
+      streamCount: 61230,
+      revenue: 152010,
+    },
+    image: "./olivia.jpeg",
     time: "04:02",
     streamCount: 2700,
     userId: "user_009",
@@ -149,7 +209,12 @@ const songData: Song[] = [
   {
     id: "song_013",
     title: "Save Your Tears",
-    artist: { name: "The Weeknd", image: "./the_weeknd.jpg" },
+    artist: {
+      name: "The Weeknd",
+      image: "./the_weeknd.jpg",
+      streamCount: 5610,
+      revenue: 5200,
+    },
     image: "./the_weeknd.jpg",
     time: "03:35",
     streamCount: 8900,
@@ -161,7 +226,12 @@ const songData: Song[] = [
   {
     id: "song_014",
     title: "Deja Vu",
-    artist: { name: "Olivia Rodrigo", image: "./image14.jpg" },
+    artist: {
+      name: "Olivia Rodrigo",
+      image: "./image14.jpg",
+      streamCount: 6108,
+      revenue: 1520,
+    },
     image: "./image14.jpg",
     time: "03:35",
     streamCount: 2200,
@@ -173,8 +243,13 @@ const songData: Song[] = [
   {
     id: "song_015",
     title: "Montero (Call Me By Your Name)",
-    artist: { name: "Lil Nas X", image: "./image15.jpg" },
-    image: "./image15.jpg",
+    artist: {
+      name: "Lil Nas X",
+      image: "./lil.jpg",
+      streamCount: 61098,
+      revenue: 15210,
+    },
+    image: "./lil.jpg",
     time: "02:17",
     streamCount: 3400,
     userId: "user_012",
@@ -185,7 +260,12 @@ const songData: Song[] = [
   {
     id: "song_016",
     title: "Butter",
-    artist: { name: "BTS", image: "./bts.jpeg" },
+    artist: {
+      name: "BTS",
+      image: "./bts.jpeg",
+      streamCount: 6108,
+      revenue: 1210,
+    },
     image: "./bts.jpeg",
     time: "02:44",
     streamCount: 4500,
@@ -197,7 +277,12 @@ const songData: Song[] = [
   {
     id: "song_017",
     title: "Kiss Me More",
-    artist: { name: "Doja Cat ft. SZA", image: "./doza.jpeg" },
+    artist: {
+      name: "Doja Cat ft. SZA",
+      image: "./doza.jpeg",
+      streamCount: 6098,
+      revenue: 10980,
+    },
     image: "./doza.jpeg",
     time: "03:28",
     streamCount: 2600,
@@ -209,7 +294,12 @@ const songData: Song[] = [
   {
     id: "song_018",
     title: "Levitating (feat. DaBaby)",
-    artist: { name: "Dua Lipa", image: "./dua.jpg" },
+    artist: {
+      name: "Dua Lipa",
+      image: "./dua.jpg",
+      streamCount: 6128,
+      revenue: 10090,
+    },
     image: "./dua.jpg",
     time: "03:23",
     streamCount: 3500,
@@ -221,7 +311,12 @@ const songData: Song[] = [
   {
     id: "song_019",
     title: "Mad Love",
-    artist: { name: "Mabel", image: "./mable.jpg" },
+    artist: {
+      name: "Mabel",
+      image: "./mable.jpg",
+      streamCount: 1128,
+      revenue: 1009,
+    },
     image: "./mable.jpg",
     time: "02:49",
     streamCount: 1500,
@@ -254,18 +349,12 @@ export const keyMetrics = {
   totalStreams: 1250000,
 };
 
-const topRevenueGeneratingArtists = [
-  { artist: "Ed Sheeran", revenue: 150000, image: "./ed.jpeg" },
-  { artist: "Taylor Swift", revenue: 120000, image: "./taylor.png" },
-];
-
 const revenueData = {
-  // totalUsers: 1350000, // Total user base
-  totalAggregate: 1731000, // Total revenue across all months
-  projectedRevenue: 1800000, // Expected revenue for the year
-  profit: 550000, // Total profit for the year in dollars
-  profitMargin: ((550000 / 1731000) * 100).toFixed(2) + "%", // Profit margin calculation
-  revenuePerUser: (1731000 / 1350000).toFixed(2), // Average revenue per user (ARPU)
+  totalAggregate: 1731000,
+  projectedRevenue: 1800000,
+  profit: 550000,
+  profitMargin: ((550000 / 1731000) * 100).toFixed(2) + "%",
+  revenuePerUser: (1731000 / 1350000).toFixed(2),
   monthlyBreakdown: [
     {
       month: "January",
@@ -443,14 +532,9 @@ function getRandomSongs(songs: Song[], count = 5) {
 
 async function getTopArtists(songs: Song[], count = 6) {
   const topArtists = songs
-    .map((song) => {
-      const total = (song.revenue ?? 0) + (song.search ?? 0);
-      return { ...song, total };
-    })
-    .sort((a, b) => b.total - a.total)
+    .sort((a, b) => b.artist.streamCount - a.artist.streamCount)
     .slice(0, count);
 
-  console.log("topArtist", topArtists);
   return topArtists;
 }
 export function makeServer() {
@@ -492,7 +576,7 @@ export function makeServer() {
         };
       });
 
-      this.get("/api/revenue-matrics", () => {
+      this.get("/api/revenue-matrics", async () => {
         return {
           revenueData: {
             totalAggregate: revenueData.totalAggregate,
@@ -501,14 +585,18 @@ export function makeServer() {
             profitMargin: revenueData.profitMargin,
             revenuePerUser: revenueData.revenuePerUser,
           },
-          topRevenueGeneratingArtists: topRevenueGeneratingArtists,
+          topRevenueGeneratingArtists: songData
+            .sort((a, b) => b.artist.revenue - a.artist.revenue)
+            .slice(0, 2),
+          revenueByState: revenueByState,
           topRevenueGeneratingSongs: songData
             .sort((a, b) => b.revenue - a.revenue)
             .slice(0, 2),
           monthlyBreakdown: revenueData.monthlyBreakdown,
-          revenueByState: revenueByState,
         };
       });
+      this.passthrough();
+      this.passthrough("https://cdn.jsdelivr.net/**");
     },
   });
 }

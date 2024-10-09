@@ -1,6 +1,13 @@
 import { useTheme } from "../theme-provider";
 import React, { useState } from "react";
-import { Chart, ArcElement, Tooltip, Legend, Title } from "chart.js";
+import {
+  Chart,
+  ArcElement,
+  Tooltip,
+  Legend,
+  Title,
+  TooltipItem,
+} from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 import {
   Select,
@@ -9,6 +16,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../ui/select";
+import { MonthlyBreakdown } from "@/lib/types";
 
 Chart.register(ArcElement, Tooltip, Legend, Title);
 Chart.defaults.plugins.tooltip.backgroundColor = "black";
@@ -22,15 +30,19 @@ const colorPalette = [
   "rgba(153, 102, 255, 1)", // Purple
 ];
 
-export function RevenueDistributionChart({ revenueData }) {
+export function RevenueDistributionChart({
+  revenueData,
+}: {
+  revenueData: MonthlyBreakdown[];
+}) {
   console.log(revenueData);
   const isDarkMode = useTheme().theme === "dark";
-  const [selectedMonth, setSelectedMonth] = useState(revenueData[0].month); // Default to the first month
+  const [selectedMonth, setSelectedMonth] = useState(revenueData[0].month);
 
   // Get the data for the selected month
   const currentMonthData = revenueData.find(
     (item) => item.month === selectedMonth
-  );
+  ) as MonthlyBreakdown;
 
   // Prepare data for the chart
   const chartData = {
@@ -45,7 +57,7 @@ export function RevenueDistributionChart({ revenueData }) {
       {
         label: `${selectedMonth} Revenue Distribution`,
         data: [
-          currentMonthData.subscriptions,
+          currentMonthData?.subscriptions,
           currentMonthData.ads,
           currentMonthData.inAppPurchases,
           currentMonthData.promotions,
@@ -71,7 +83,7 @@ export function RevenueDistributionChart({ revenueData }) {
       },
       tooltip: {
         callbacks: {
-          label: function (tooltipItem) {
+          label: function (tooltipItem: TooltipItem<"doughnut">) {
             return tooltipItem.label + ": " + "$" + tooltipItem.raw;
           },
         },

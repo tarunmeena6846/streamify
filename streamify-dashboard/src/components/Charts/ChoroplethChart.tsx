@@ -2,7 +2,9 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { ComposableMap, Geographies, Geography } from "react-simple-maps";
-import { scaleQuantile } from "d3-scale";
+import { scaleQuantile, scaleThreshold } from "d3-scale";
+// import { scaleLinear, scaleQuantile } from "d3-scale";
+
 import {
   Card,
   CardContent,
@@ -10,11 +12,17 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { StateRevenueType } from "@/lib/types";
 
 // US map topojson data
 const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
 
-export default function USChoroplethMap({ revenueByState }) {
+export default function USChoroplethMap({
+  revenueByState,
+}: {
+  revenueByState: StateRevenueType[];
+}) {
+  console.log("tarun revenueByState", revenueByState);
   const [tooltipContent, setTooltipContent] = useState("");
   const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
   const mapRef = useRef<HTMLDivElement>(null);
@@ -25,9 +33,9 @@ export default function USChoroplethMap({ revenueByState }) {
       const y = event.clientY - mapRect.top;
 
       // Adjust tooltip position to stay within map bounds
-      const tooltipWidth = 150; // Approximate width of tooltip
-      const tooltipHeight = 40; // Approximate height of tooltip
-      const padding = 10; // Padding from the edges
+      const tooltipWidth = 150;
+      const tooltipHeight = 40;
+      const padding = 10;
 
       let adjustedX = x;
       let adjustedY = y;
@@ -43,8 +51,9 @@ export default function USChoroplethMap({ revenueByState }) {
     }
   };
 
-  const colorScale = scaleQuantile()
-    .domain(revenueByState.map((d) => d.revenue))
+  const colorScale = scaleThreshold()
+    .domain(revenueByState.map((d: StateRevenueType) => d.revenue))
+    // @ts-ignore
     .range([
       "#e3f2fd",
       "#bbdefb",
@@ -68,17 +77,16 @@ export default function USChoroplethMap({ revenueByState }) {
             <Geographies geography={geoUrl}>
               {({ geographies }) =>
                 geographies.map((geo) => {
-                  // Log the geo object to inspect its structure
-                  console.log(geo, "geo is ");
+                  // console.log(geo.id, geo.properties); // Check the structure
 
-                  // Assuming the state abbreviation is in geo.properties.iso_3166_2
                   const cur = revenueByState.find((s) => s.id === geo.id);
-                  console.log("current is ", cur);
+                  // console.log("current is ", cur);
 
                   return (
                     <Geography
                       key={geo.rsmKey}
                       geography={geo}
+                      // @ts-ignore
                       fill={cur ? colorScale(cur.revenue) : "#F5F5F5"}
                       stroke="#FFF"
                       strokeWidth={0.5}
@@ -120,8 +128,9 @@ export default function USChoroplethMap({ revenueByState }) {
               {colorScale.range().map((color, i) => (
                 <div
                   key={i}
+                  // @ts-ignore
                   style={{ backgroundColor: color }}
-                  className="w-4 h-4"
+                  className={`w-4 h-4`}
                 />
               ))}
             </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import Sidebar from "./SideBar"; // Import the sidebar component
 
-const DashboardLayout = ({ children }) => {
+const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="flex min-h-screen">
       <div className="hidden md:block  xl:w-1/5">
@@ -15,4 +15,3 @@ const DashboardLayout = ({ children }) => {
 };
 
 export default DashboardLayout;
-  

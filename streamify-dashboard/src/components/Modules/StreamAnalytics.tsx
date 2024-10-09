@@ -3,37 +3,47 @@ import { Card, CardContent, CardHeader } from "../ui/card";
 import DashboardLayout from "./DashboardLayout";
 import { RecentStreamsTable } from "./RecentStreamTable";
 import { useEffect, useState } from "react";
+import { Artist, Song } from "@/lib/types";
 
-export const ArtistCard = ({ artist }) => {
-  console.log("tarun artist in card", artist);
+export const ArtistCard = ({ artist }: { artist: Artist }) => {
   return (
     <div className="flex flex-col items-center">
       <img
         src={artist.image}
-        alt={artist.artist.name}
+        alt={artist.name}
         className="rounded-full w-20 h-20 object-cover"
       />
-      <h2 className="text-lg font-semibold mt-2 ">{artist.artist.name}</h2>
+      <h2 className="text-lg font-semibold mt-2 ">{artist.name}</h2>
       <h2 className="text-sm text-gray-500">{`(${artist.streamCount.toLocaleString()} streams)`}</h2>
     </div>
   );
 };
 
-const TopArtists = ({ artists }) => {
+const TopArtists = ({ artists }: { artists: Song[] }) => {
   console.log("tarun artist", artists);
   return (
     <div className="space-y-2 mt-4 ">
       <h2 className="text-xl font-bold mb-4 ">Monthly Top Artists</h2>
       <div className="grid grid-cols-3 grid-rows-2 gap-4">
         {artists.map((artist, index) => (
-          <ArtistCard key={index} artist={artist} />
+          <ArtistCard key={index} artist={artist.artist} />
         ))}
       </div>
     </div>
   );
 };
 
-const SongCard = ({ title, artist, image, streams }) => {
+const SongCard = ({
+  title,
+  artist,
+  image,
+  streams,
+}: {
+  title: string;
+  artist: Artist;
+  image: string;
+  streams: number;
+}) => {
   return (
     <div className="flex flex-col items-center">
       <img
@@ -46,7 +56,11 @@ const SongCard = ({ title, artist, image, streams }) => {
     </div>
   );
 };
-const TopStreamedSongCard = ({ topStreamedSongs }) => {
+const TopStreamedSongCard = ({
+  topStreamedSongs,
+}: {
+  topStreamedSongs: Song[];
+}) => {
   return (
     <div className="order-4 md:order-none md:col-span-4 flex justify-center flex-col">
       <h2 className="text-xl font-bold mb-4">Most Searched Songs</h2>
@@ -55,7 +69,7 @@ const TopStreamedSongCard = ({ topStreamedSongs }) => {
           <SongCard
             key={index}
             title={song.title}
-            artist={song.artist.name}
+            artist={song.artist}
             image={song.image}
             streams={song.streamCount}
           />
@@ -85,8 +99,6 @@ export function StreamAnalytics() {
   return (
     <DashboardLayout>
       <div className="grid gap-4 grid-cols-1 w-full md:grid-cols-6 ">
-        {/* <div className="container mx-auto"> */}
-        {/* Added padding on mobile */}
         {/* Hero section */}
         <div className="order-1 md:order-none col-span-1 md:col-span-4 bg-[#fbeceb] text-black rounded-3xl flex flex-col md:flex-row justify-between overflow-hidden">
           <div className="flex flex-col justify-center p-6 w-full md:w-1/4">

@@ -1,9 +1,15 @@
 import { useEffect, useState } from "react";
-import ChoroplethMap from "../Charts/ChoroplethChart";
+// import ChoroplethMap from "../Charts/ChoroplethChart";
 import { RevenueDistributionChart } from "../Charts/RevenueDistributionChart";
 import { Card, CardContent, CardHeader } from "../ui/card";
 import DashboardLayout from "./DashboardLayout";
-import { MonthlyBreakdown, RevenueData, Song } from "@/lib/types";
+import {
+  MonthlyBreakdown,
+  RevenueData,
+  Song,
+  StateRevenueType,
+} from "@/lib/types";
+import USChoroplethMap from "../Charts/ChoroplethChart";
 
 export function RevenueAnalytics() {
   const [revenueData, setRevenueData] = useState<RevenueData>({
@@ -21,13 +27,13 @@ export function RevenueAnalytics() {
   const [monthlyBreakdown, setMonthlyBreakdown] = useState<MonthlyBreakdown[]>(
     []
   );
-  const [revenueByState, setRevenueByState] = useState([]);
+  const [revenueByState, setRevenueByState] = useState<StateRevenueType[]>([]);
 
   useEffect(() => {
     fetch("/api/revenue-matrics")
       .then((response) => response.json())
       .then((data) => {
-        console.log("tarun data here at ", data.monthlyBreakdown);
+        console.log("tarun data here at ", data);
         setRevenueData(data.revenueData);
         setTopRevenueGeneratingArtists(data.topRevenueGeneratingArtists);
         setTopRevenueGeneratingSongs(data.topRevenueGeneratingSongs);
@@ -67,7 +73,9 @@ export function RevenueAnalytics() {
 
           {/* Revenue Distribution Chart */}
           <div className="col-span-1 row-span-2 md:col-span-4 md:row-span-2">
-            <RevenueDistributionChart revenueData={monthlyBreakdown} />
+            {monthlyBreakdown.length != 0 && (
+              <RevenueDistributionChart revenueData={monthlyBreakdown} />
+            )}
           </div>
 
           {/* Profit Margin & Revenue Per User */}
@@ -139,7 +147,9 @@ export function RevenueAnalytics() {
 
           {/* Choropleth Map */}
           <div className="col-span-1  md:col-span-6 md:row-span-2">
-            <ChoroplethMap revenueByState={revenueByState} />
+            {revenueByState.length != 0 && (
+              <USChoroplethMap revenueByState={revenueByState} />
+            )}
           </div>
         </div>
       </div>
