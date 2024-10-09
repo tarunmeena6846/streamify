@@ -1,4 +1,4 @@
-import { Car, Heart, Play } from "lucide-react";
+import { Heart, Play } from "lucide-react";
 import { Card, CardContent, CardHeader } from "../ui/card";
 import DashboardLayout from "./DashboardLayout";
 import { RecentStreamsTable } from "./RecentStreamTable";

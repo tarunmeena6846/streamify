@@ -1,5 +1,5 @@
 import { useTheme } from "../theme-provider";
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   Chart,
   ArcElement,

@@ -1,12 +1,4 @@
-import React from "react";
-import {
-  BarChart,
-  Users,
-  Music,
-  DollarSign,
-  Settings,
-  HomeIcon,
-} from "lucide-react";
+import { Users, Music, DollarSign, Settings, HomeIcon } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const Sidebar = () => {

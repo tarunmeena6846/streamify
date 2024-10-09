@@ -18,7 +18,7 @@ export function Appbar() {
         animate={{ y: 0, opacity: 1 }}
         transition={{
           duration: 0.5,
-          ease: "easeInOut",
+          // ease: "easeInOut",
           type: "spring",
           damping: 10,
         }}

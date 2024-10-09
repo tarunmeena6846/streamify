@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Play, Pause, SkipBack, SkipForward } from "lucide-react"; // Use appropriate icons from Lucide
 import { Song } from "@/lib/types";
 

@@ -21,7 +21,17 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 
 // Reusable NavItem component
-const NavItem = ({ icon: Icon, label, onClick, disabled = false }) => {
+const NavItem = ({
+  Icon,
+  label,
+  onClick,
+  disabled = false,
+}: {
+  Icon: any;
+  label: string;
+  onClick: () => void;
+  disabled?: boolean;
+}) => {
   return (
     <SheetClose asChild>
       <button
@@ -37,7 +47,7 @@ const NavItem = ({ icon: Icon, label, onClick, disabled = false }) => {
 };
 
 // Avatar section component
-const AvatarSection = ({ isLoggedIn }) => {
+const AvatarSection = ({ isLoggedIn }: { isLoggedIn: boolean }) => {
   return (
     <SheetHeader className="flex items-center mb-3">
       {isLoggedIn && (
@@ -51,7 +61,13 @@ const AvatarSection = ({ isLoggedIn }) => {
 };
 
 // Login/Logout button component
-const LoginButton = ({ isLoggedIn, toggleLogin }) => {
+const LoginButton = ({
+  isLoggedIn,
+  toggleLogin,
+}: {
+  isLoggedIn: boolean;
+  toggleLogin: () => void;
+}) => {
   return (
     <button
       onClick={toggleLogin}
@@ -88,24 +104,24 @@ export function MobileMenu() {
         <AvatarSection isLoggedIn={loginClicked} />
 
         <nav className="flex flex-col gap-4">
-          <NavItem icon={HomeIcon} label="Home" onClick={() => navigate("/")} />
+          <NavItem Icon={HomeIcon} label="Home" onClick={() => navigate("/")} />
           <NavItem
-            icon={Users}
+            Icon={Users}
             label="User Insights"
             onClick={() => navigate("/user-analytics")}
           />
           <NavItem
-            icon={Music}
+            Icon={Music}
             label="Streaming Analytics"
             onClick={() => navigate("/stream-analytics")}
           />
           <NavItem
-            icon={DollarSign}
+            Icon={DollarSign}
             label="Revenue Analytics"
             onClick={() => navigate("/revenue-analytics")}
           />
           <NavItem
-            icon={Settings}
+            Icon={Settings}
             label="Settings"
             onClick={() => navigate("/settings")}
             disabled

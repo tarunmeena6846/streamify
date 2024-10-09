@@ -134,7 +134,7 @@ export function RecentStreamsTable({
     data: recentStreams,
     columns,
     onSortingChange: setSorting,
-    globalFilterFn: (row, columnIds, filterValue) => {
+    globalFilterFn: (row, filterValue) => {
       const artistName: string = row.getValue("artistName") || "";
       const title: string = row.getValue("title") || "";
       return (

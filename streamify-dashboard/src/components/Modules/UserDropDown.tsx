@@ -8,11 +8,11 @@ import {
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
 import { LogOut, UserRound } from "lucide-react";
-import { useRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 
 export function UserDropDown() {
-  const [loginClicked, setIsLoginClicked] = useRecoilState(userState);
+  const setIsLoginClicked = useSetRecoilState(userState);
 
   const dropDownData = [
     {

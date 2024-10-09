@@ -1,5 +1,3 @@
-// UserGrowthChart.js
-import React from "react";
 import { Line } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -12,8 +10,8 @@ import {
   Legend,
 } from "chart.js";
 import { useTheme } from "../theme-provider";
+import { UserGrowthData } from "@/lib/types";
 
-// Registering the necessary components for Chart.js
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -24,7 +22,11 @@ ChartJS.register(
   Legend
 );
 
-const UserGrowth = ({ userGrowthData }) => {
+const UserGrowth = ({
+  userGrowthData,
+}: {
+  userGrowthData: UserGrowthData[];
+}) => {
   const isDarkMode = useTheme().theme === "dark";
   console.log(isDarkMode);
   // Prepare data for the chart

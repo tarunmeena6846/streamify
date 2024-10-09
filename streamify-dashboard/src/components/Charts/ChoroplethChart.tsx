@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { ComposableMap, Geographies, Geography } from "react-simple-maps";
-import { scaleQuantile, scaleThreshold } from "d3-scale";
+import { scaleThreshold } from "d3-scale";
 // import { scaleLinear, scaleQuantile } from "d3-scale";
 
 import {
